@@ -9,6 +9,7 @@ module.exports = (env, { mode }) => {
             "js/script": path.resolve(__dirname, "src/ts/script.ts"),
             "css/style": path.resolve(__dirname, "src/scss/style.scss"),
         },
+        devtool: mode === "development" ? "eval-source-map" : false,
         module: {
             rules: [
                 {
