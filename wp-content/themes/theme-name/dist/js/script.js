@@ -16,7 +16,7 @@
   \**************************/
 /***/ (() => {
 
-eval("\nalert(\"Test\");\n//# sourceURL=[module]\n//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoiLi9zcmMvdHMvc2NyaXB0LnRzIiwibWFwcGluZ3MiOiI7QUFBQSxLQUFLLENBQUMsTUFBTSxDQUFDLENBQUMiLCJzb3VyY2VzIjpbIndlYnBhY2s6Ly90aGVtZW5hbWUvLi9zcmMvdHMvc2NyaXB0LnRzPzkxMjMiXSwic291cmNlc0NvbnRlbnQiOlsiYWxlcnQoXCJUZXN0XCIpO1xyXG4iXSwibmFtZXMiOltdLCJzb3VyY2VSb290IjoiIn0=\n//# sourceURL=webpack-internal:///./src/ts/script.ts\n");
+eval("\nconsole.log(\"Works\");\n//# sourceURL=[module]\n//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoiLi9zcmMvdHMvc2NyaXB0LnRzIiwibWFwcGluZ3MiOiI7QUFBQSxPQUFPLENBQUMsR0FBRyxDQUFDLE9BQU8sQ0FBQyxDQUFDIiwic291cmNlcyI6WyJ3ZWJwYWNrOi8vdGhlbWVuYW1lLy4vc3JjL3RzL3NjcmlwdC50cz85MTIzIl0sInNvdXJjZXNDb250ZW50IjpbImNvbnNvbGUubG9nKFwiV29ya3NcIik7XHJcbiJdLCJuYW1lcyI6W10sInNvdXJjZVJvb3QiOiIifQ==\n//# sourceURL=webpack-internal:///./src/ts/script.ts\n");
 
 /***/ })
 
