@@ -1,1 +1,1 @@
-<?php /** EMPTINESS */ ?>
+<div>Example</div>
