@@ -8,3 +8,5 @@
 [10-Apr-2024 17:50:10 UTC] PHP Warning:  Attempt to read property "title" on null in C:\xampp\htdocs\wp-template\wp-includes\class-wp-customize-widgets.php on line 905
 [10-Apr-2024 17:51:16 UTC] PHP Warning:  Attempt to read property "title" on null in C:\xampp\htdocs\wp-template\wp-includes\class-wp-customize-widgets.php on line 905
 [10-Apr-2024 17:51:59 UTC] PHP Warning:  Attempt to read property "title" on null in C:\xampp\htdocs\wp-template\wp-includes\class-wp-customize-widgets.php on line 905
+[25-Apr-2024 08:29:22 UTC] PHP Warning:  mysqli_real_connect(): (HY000/2002): No connection could be made because the target machine actively refused it in C:\xampp\htdocs\wp-template\wp-includes\class-wpdb.php on line 1987
+[25-Apr-2024 08:29:28 UTC] PHP Warning:  mysqli_real_connect(): (HY000/2002): No connection could be made because the target machine actively refused it in C:\xampp\htdocs\wp-template\wp-includes\class-wpdb.php on line 1987
