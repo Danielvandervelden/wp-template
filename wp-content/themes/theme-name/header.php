@@ -9,6 +9,7 @@
 </head>
 
 <body <?php body_class() ?>>
+  <div id="backdrop"></div>
   <header class="header-container">
     <div class="logo-container">
       <?php 
