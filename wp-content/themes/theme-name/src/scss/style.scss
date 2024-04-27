@@ -1,6 +1,7 @@
-@import "./variables";
+@use "./variables";
 @import "./typography";
 @import "./normalize";
+@import './layout';
 @import "./parts/header";
 
 /* Default properties for mobile devices */
@@ -31,10 +32,13 @@
     --color-dark: #343a40; /* Dark color */
     --color-text: #212529; /* Main text color */
     --color-link: var(--color-primary); /* Link color */
+
+    /* Spacing */
+    --padding-sides: 1rem;
 }
 
 /* Media queries for larger screens */
-@media (min-width: 768px) {
+@media (min-width: variables.$breakpoint-min-tablet) {
     :root {
         /* Adjusted larger font sizes for desktop */
         --font-size-h1: 3rem; /* Larger on desktops */

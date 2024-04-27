@@ -18,12 +18,13 @@
       }
       ?>
     </div>
-    <button id="mobile-menu-trigger"><i class="icon-hamburger"></i></button>
+    <button id="mobile-menu-trigger" aria-controls="navigation" aria-expanded="false"><i class="icon-hamburger"></i></button>
     <?php 
     if (has_nav_menu('header-menu')) {
       wp_nav_menu(array(
           'theme_location' => 'header-menu',
           'container' => 'nav',
+          'container_id' => 'navigation',
           'container_class' => 'menu-container',
           'menu_class' => 'header-menu',
       ));
