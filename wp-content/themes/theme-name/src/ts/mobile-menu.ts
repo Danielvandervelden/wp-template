@@ -51,8 +51,6 @@ export class MobileMenu {
         this.mobileMenuTrigger.setAttribute("aria-expanded", "false");
         (this.mobileMenuTrigger as HTMLElement).focus();
         (this.navigation as HTMLElement).style.visibility = "hidden";
-
-        // document.removeEventListener("keydown", this.trapTabKey);
     }
 
     private handleVisibilityChange() {
