@@ -1,9 +1,15 @@
 @use "../variables";
+@use "../mixins";
 
 .header-container {
     display: flex;
     align-items: center;
     padding: 0 var(--padding-sides);
+    position: fixed;
+    z-index: 100;
+    top: 0;
+    left: 0;
+    width: 100%;
 }
 
 .logo-container {
@@ -16,11 +22,13 @@
 }
 
 .menu-container {
-    flex-grow: 1;
-
     ul {
-      list-style: none;
+        list-style: none;
     }
+}
+
+#header-divider {
+    flex-grow: 1;
 }
 
 @media (max-width: variables.$breakpoint-max-tablet) {
@@ -30,7 +38,7 @@
         font-size: 1.5rem;
 
         &:active {
-          color: var(--color-primary);
+            color: var(--color-primary);
         }
     }
 
@@ -54,29 +62,132 @@
 
 @media (min-width: variables.$breakpoint-min-desktop) {
     #mobile-menu-trigger {
-      display: none;
+        display: none;
     }
 
     #menu-main-menu {
         display: flex;
-        gap: 2rem;
+        gap: 1rem;
 
-        li {
-            position: relative;
+        > li {
+            padding: 1rem;
+            border-radius: 0.5rem;
+
+            &:hover {
+              background-color: var(--color-primary);
+              color: #FFF;
+
+              >a {
+                color: #FFF;
+              }
+
+                &:after {
+                    transform: rotate(180deg);
+                }
+            }
+        }
+
+        /** Every menu item with children needs the icon */
+        .menu-item-has-children {
+            @include mixins.icon("\e904");
 
             ul {
-                display: none;
                 position: absolute;
-                top: 100%;
-                left: 0;
+                pointer-events: none;
+                opacity: 0;
+                visibility: hidden;
+                transform: translateY(10px);
                 background-color: var(--color-light);
-                padding: 1rem;
                 border-radius: 0.5rem;
-                box-shadow: 0 0 1rem rgba(0, 0, 0, 0.1);
+                padding: 0;
             }
 
-            &:hover ul {
-                display: block;
+            &:hover {
+                > ul {
+                    opacity: 1;
+                    visibility: visible;
+                    transform: translateY(0);
+                    pointer-events: auto;
+                }
+            }
+        }
+
+        /** The very first menu item with children needs their ul positioned differently than the deeper nested ones. */
+        > .menu-item-has-children {
+            position: relative;
+            border-radius: 0.5rem .5rem 0 0;
+
+            > ul {
+                top: 100%;
+                right: 0;
+
+                li {
+                    white-space: nowrap;
+                    padding: 1rem;
+                    border-left: 1px solid var(--color-primary);
+                    border-right: 1px solid var(--color-primary);
+
+                    &:first-of-type {
+                        padding-top: 1rem;
+                        border-top: 1px solid var(--color-primary);
+                        border-radius: 0
+                    }
+
+                    &:last-of-type {
+                        padding-bottom: 1rem;
+                        border-bottom: 1px solid var(--color-primary);
+                        border-radius: 0 0 0.5rem 0.5rem;
+                    }
+
+                    &:hover {
+                        &:after {
+                            transform: rotate(95deg);
+                        }
+                    }
+
+                    /** Level 2 menus and beyond */
+                    ul {
+                        top: 0;
+                        right: 100%;
+                        box-shadow: none;
+                        border-radius: 0.5rem 0 0 0.5rem;
+                        background-color: var(--color-primary);
+
+                        li {
+                            a {
+                                color: #fff;
+                            }
+
+                            &:first-of-type {
+                                border-radius: 0.5rem 0 0 0;
+                            }
+
+                            &:last-of-type {
+                                border-radius: 0 0 0 0.5rem;
+                            }
+                        }
+                    }
+                }
+
+                /** Direct children of the first menu item */
+                > li {
+                    padding: 1rem;
+
+                    &:hover {
+                        background-color: var(--color-primary);
+                        color: #fff;
+
+                        &:last-of-type {
+                            &.menu-item-has-children {
+                                border-radius: 0 0 0.5rem 0.5rem;
+                            }
+                        }
+
+                        > a {
+                            color: #fff;
+                        }
+                    }
+                }
             }
         }
     }

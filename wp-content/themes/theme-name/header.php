@@ -18,6 +18,7 @@
       }
       ?>
     </div>
+    <div id="header-divider"></div>
     <button id="mobile-menu-trigger" aria-controls="navigation" aria-expanded="false"><i class="icon-hamburger"></i></button>
     <?php 
     if (has_nav_menu('header-menu')) {

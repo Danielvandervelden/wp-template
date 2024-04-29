@@ -9,13 +9,9 @@
 
 get_header(); ?>
 
-    <main id="primary" class="site-main">
-
-      <h1><?= get_the_title() ?></h1>
-      
+    <main id="primary" class="site-main">      
       <?= get_the_content() ?>
-
-    </main><!-- #main -->
+    </main>
 
 <?php
 get_footer();
