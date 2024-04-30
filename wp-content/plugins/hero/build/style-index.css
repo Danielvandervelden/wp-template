@@ -25,15 +25,18 @@ section.hero:after {
   content: "";
   display: block;
   width: 100%;
-  height: 30%;
+  height: 80%;
   position: absolute;
   top: 0;
   left: 0;
-  background: linear-gradient(180deg, rgba(0, 0, 0, 0.8) 0%, rgba(0, 0, 0, 0) 100%);
+  background: linear-gradient(180deg, rgba(0, 0, 0, 0.6) 0%, rgba(0, 0, 0, 0) 100%);
 }
 section.hero .hero-image-wrapper {
   height: 100%;
   position: absolute;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   top: 0;
   left: 0;
   min-width: 100%;
@@ -53,7 +56,6 @@ section.hero .hero-image-caption {
   left: 1rem;
   font-size: 8vw;
   font-family: var(--heading-font-family);
-  text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;
   color: #fff;
 }
 section.hero img {
