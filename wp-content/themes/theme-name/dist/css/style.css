@@ -5,7 +5,6 @@
 body {
   font-size: 1rem;
   font-size: var(--font-size-base);
-  color: #212529;
   color: var(--color-text);
   font-family: "Open Sans", sans-serif, Helvetica, Arial, sans-serif;
   font-family: var(--font-family), Helvetica, Arial, sans-serif;
@@ -14,42 +13,36 @@ body {
 h1 {
   font-size: 2.5rem;
   font-size: var(--font-size-h1);
-  color: #343a40;
   color: var(--color-dark);
 }
 
 h2 {
   font-size: 2rem;
   font-size: var(--font-size-h2);
-  color: #343a40;
   color: var(--color-dark);
 }
 
 h3 {
   font-size: 1.75rem;
   font-size: var(--font-size-h3);
-  color: #343a40;
   color: var(--color-dark);
 }
 
 h4 {
   font-size: 1.5rem;
   font-size: var(--font-size-h4);
-  color: #343a40;
   color: var(--color-dark);
 }
 
 h5 {
   font-size: 1.25rem;
   font-size: var(--font-size-h5);
-  color: #343a40;
   color: var(--color-dark);
 }
 
 h6 {
   font-size: 1rem;
   font-size: var(--font-size-h6);
-  color: #343a40;
   color: var(--color-dark);
 }
 
@@ -60,7 +53,7 @@ p {
 }
 
 a {
-  color: #0056b3;
+  color: #EFECCA;
   color: var(--color-link);
   -webkit-text-decoration: none;
   text-decoration: none;
@@ -457,7 +450,7 @@ main#primary {
     font-size: 1.5rem;
   }
   #mobile-menu-trigger:active {
-    color: #0056b3;
+    color: #EFECCA;
     color: var(--color-primary);
   }
   .menu-container {
@@ -490,16 +483,22 @@ main#primary {
     padding: 1rem;
     border-radius: 0.5rem;
   }
+  #menu-main-menu > li > a {
+    color: #fff;
+  }
   #menu-main-menu > li:hover {
-    background-color: #0056b3;
+    background-color: #EFECCA;
     background-color: var(--color-primary);
-    color: #FFF;
+    color: #fff;
   }
   #menu-main-menu > li:hover > a {
-    color: #FFF;
+    color: #5E565A;
+    color: var(--default);
   }
   #menu-main-menu > li:hover:after {
     transform: rotate(180deg);
+    color: #5E565A;
+    color: var(--default);
   }
   #menu-main-menu .menu-item-has-children {
     speak: never;
@@ -518,6 +517,7 @@ main#primary {
     display: inline-block;
     vertical-align: middle;
     content: "\e904";
+    color: #FFF;
   }
   #menu-main-menu .menu-item-has-children ul {
     position: absolute;
@@ -525,7 +525,6 @@ main#primary {
     opacity: 0;
     visibility: hidden;
     transform: translateY(10px);
-    background-color: #f8f9fa;
     background-color: var(--color-light);
     border-radius: 0.5rem;
     padding: 0;
@@ -543,42 +542,48 @@ main#primary {
   #menu-main-menu > .menu-item-has-children > ul {
     top: 100%;
     right: 0;
+    width: 100%;
     /** Direct children of the first menu item */
   }
   #menu-main-menu > .menu-item-has-children > ul li {
     white-space: nowrap;
     padding: 1rem;
-    border-left: 1px solid #0056b3;
+    border-left: 1px solid #EFECCA;
     border-left: 1px solid var(--color-primary);
-    border-right: 1px solid #0056b3;
+    border-right: 1px solid #EFECCA;
     border-right: 1px solid var(--color-primary);
     /** Level 2 menus and beyond */
   }
   #menu-main-menu > .menu-item-has-children > ul li:first-of-type {
     padding-top: 1rem;
-    border-top: 1px solid #0056b3;
+    border-top: 1px solid #EFECCA;
     border-top: 1px solid var(--color-primary);
     border-radius: 0;
   }
   #menu-main-menu > .menu-item-has-children > ul li:last-of-type {
     padding-bottom: 1rem;
-    border-bottom: 1px solid #0056b3;
+    border-bottom: 1px solid #EFECCA;
     border-bottom: 1px solid var(--color-primary);
     border-radius: 0 0 0.5rem 0.5rem;
   }
   #menu-main-menu > .menu-item-has-children > ul li:hover:after {
     transform: rotate(95deg);
   }
+  #menu-main-menu > .menu-item-has-children > ul li:after {
+    color: #5E565A;
+    color: var(--default);
+  }
   #menu-main-menu > .menu-item-has-children > ul li ul {
     top: 0;
     right: 100%;
     box-shadow: none;
     border-radius: 0.5rem 0 0 0.5rem;
-    background-color: #0056b3;
+    background-color: #EFECCA;
     background-color: var(--color-primary);
   }
   #menu-main-menu > .menu-item-has-children > ul li ul li a {
-    color: #fff;
+    color: #5E565A;
+    color: var(--default);
   }
   #menu-main-menu > .menu-item-has-children > ul li ul li:first-of-type {
     border-radius: 0.5rem 0 0 0;
@@ -588,17 +593,15 @@ main#primary {
   }
   #menu-main-menu > .menu-item-has-children > ul > li {
     padding: 1rem;
-  }
-  #menu-main-menu > .menu-item-has-children > ul > li:hover {
-    background-color: #0056b3;
+    background-color: #EFECCA;
     background-color: var(--color-primary);
-    color: #fff;
+  }
+  #menu-main-menu > .menu-item-has-children > ul > li > a {
+    color: #5E565A;
+    color: var(--default);
   }
   #menu-main-menu > .menu-item-has-children > ul > li:hover:last-of-type.menu-item-has-children {
     border-radius: 0 0 0.5rem 0.5rem;
-  }
-  #menu-main-menu > .menu-item-has-children > ul > li:hover > a {
-    color: #fff;
   }
 }
 /* Default properties for mobile devices */
@@ -609,6 +612,7 @@ main#primary {
   --font-size-sm: 0.875rem; /* 14px */
   --font-size-xs: 0.75rem; /* 12px */
   --font-family: "Open Sans", sans-serif;
+  --heading-font-family: "Pacifico", cursive;
   /* Heading sizes */
   --font-size-h1: 2.5rem;
   --font-size-h2: 2rem;
@@ -617,16 +621,16 @@ main#primary {
   --font-size-h5: 1.25rem;
   --font-size-h6: 1rem;
   /* Colors */
-  --color-primary: #0056b3; /* Primary color */
-  --color-secondary: #6c757d; /* Secondary color */
-  --color-success: #28a745; /* Success color */
-  --color-info: #17a2b8; /* Info color */
-  --color-warning: #ffc107; /* Warning color */
-  --color-danger: #dc3545; /* Danger color */
-  --color-light: #f8f9fa; /* Light color */
-  --color-dark: #343a40; /* Dark color */
-  --color-text: #212529; /* Main text color */
-  --color-link: var(--color-primary); /* Link color */
+  --color-primary: #EFECCA;
+  --color-secondary: #A9CBB7;
+  --color-tertiary: #D1B1C8;
+  --color-quarternary: #FB4D3D;
+  --color-success: #28a745;
+  --color-info: #17a2b8;
+  --color-warning: #ffc107;
+  --color-danger: #dc3545;
+  --default: #5E565A;
+  --color-link: var(--color-primary);
   /* Spacing */
   --padding-sides: 1rem;
 }

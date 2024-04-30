@@ -73,23 +73,28 @@
             padding: 1rem;
             border-radius: 0.5rem;
 
-            &:hover {
-              background-color: var(--color-primary);
-              color: #FFF;
+            > a {
+                color: #fff;
+            }
 
-              >a {
-                color: #FFF;
-              }
+            &:hover {
+                background-color: var(--color-primary);
+                color: #fff;
+
+                > a {
+                  color: var(--default);
+                }
 
                 &:after {
                     transform: rotate(180deg);
+                    color: var(--default);
                 }
             }
         }
 
         /** Every menu item with children needs the icon */
         .menu-item-has-children {
-            @include mixins.icon("\e904");
+            @include mixins.icon("\e904", #FFF);
 
             ul {
                 position: absolute;
@@ -115,11 +120,12 @@
         /** The very first menu item with children needs their ul positioned differently than the deeper nested ones. */
         > .menu-item-has-children {
             position: relative;
-            border-radius: 0.5rem .5rem 0 0;
+            border-radius: 0.5rem 0.5rem 0 0;
 
             > ul {
                 top: 100%;
                 right: 0;
+                width: 100%;
 
                 li {
                     white-space: nowrap;
@@ -130,7 +136,7 @@
                     &:first-of-type {
                         padding-top: 1rem;
                         border-top: 1px solid var(--color-primary);
-                        border-radius: 0
+                        border-radius: 0;
                     }
 
                     &:last-of-type {
@@ -145,6 +151,10 @@
                         }
                     }
 
+                    &:after {
+                      color: var(--default);
+                    }
+
                     /** Level 2 menus and beyond */
                     ul {
                         top: 0;
@@ -155,7 +165,7 @@
 
                         li {
                             a {
-                                color: #fff;
+                                color: var(--default);
                             }
 
                             &:first-of-type {
@@ -172,19 +182,15 @@
                 /** Direct children of the first menu item */
                 > li {
                     padding: 1rem;
+                    background-color: var(--color-primary);
+                    
+                    > a {color: var(--default);}
 
                     &:hover {
-                        background-color: var(--color-primary);
-                        color: #fff;
-
                         &:last-of-type {
                             &.menu-item-has-children {
                                 border-radius: 0 0 0.5rem 0.5rem;
                             }
-                        }
-
-                        > a {
-                            color: #fff;
                         }
                     }
                 }

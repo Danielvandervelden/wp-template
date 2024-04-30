@@ -12,6 +12,7 @@
     --font-size-sm: 0.875rem; /* 14px */
     --font-size-xs: 0.75rem; /* 12px */
     --font-family: "Open Sans", sans-serif;
+    --heading-font-family: "Pacifico", cursive;
 
     /* Heading sizes */
     --font-size-h1: 2.5rem;
@@ -22,16 +23,16 @@
     --font-size-h6: 1rem;
 
     /* Colors */
-    --color-primary: #0056b3; /* Primary color */
-    --color-secondary: #6c757d; /* Secondary color */
-    --color-success: #28a745; /* Success color */
-    --color-info: #17a2b8; /* Info color */
-    --color-warning: #ffc107; /* Warning color */
-    --color-danger: #dc3545; /* Danger color */
-    --color-light: #f8f9fa; /* Light color */
-    --color-dark: #343a40; /* Dark color */
-    --color-text: #212529; /* Main text color */
-    --color-link: var(--color-primary); /* Link color */
+    --color-primary: #EFECCA; 
+    --color-secondary: #A9CBB7;
+    --color-tertiary: #D1B1C8;
+    --color-quarternary: #FB4D3D;
+    --color-success: #28a745;
+    --color-info: #17a2b8;
+    --color-warning: #ffc107;
+    --color-danger: #dc3545;
+    --default: #5E565A;
+    --color-link: var(--color-primary);
 
     /* Spacing */
     --padding-sides: 1rem;

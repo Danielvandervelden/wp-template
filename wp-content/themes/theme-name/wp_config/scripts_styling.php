@@ -15,7 +15,7 @@ function load_scripts_and_styles() {
 add_action( 'wp_enqueue_scripts', 'load_scripts_and_styles' );
 
 function load_google_fonts() {
-  wp_enqueue_style( 'google-font', 'https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap', false );
+  wp_enqueue_style( 'google-font', 'https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&family=Pacifico&display=swap', false );
 }
 
 add_action( 'wp_enqueue_scripts', 'load_google_fonts' );

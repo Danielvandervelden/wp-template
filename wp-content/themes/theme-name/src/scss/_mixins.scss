@@ -1,4 +1,4 @@
-@mixin icon($icon) {
+@mixin icon($icon, $color: #000) {
   speak: never;
   font-style: normal;
   font-weight: normal;
@@ -15,5 +15,6 @@
     display: inline-block;
     vertical-align: middle;
     content: $icon;
+    color: $color;
   }
 }

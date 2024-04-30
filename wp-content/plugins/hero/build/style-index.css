@@ -21,6 +21,16 @@ section.hero {
   transform: translateX(-50%);
   overflow: hidden;
 }
+section.hero:after {
+  content: "";
+  display: block;
+  width: 100%;
+  height: 30%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  background: linear-gradient(180deg, rgba(0, 0, 0, 0.8) 0%, rgba(0, 0, 0, 0) 100%);
+}
 section.hero .hero-image-wrapper {
   height: 100%;
   position: absolute;
@@ -41,11 +51,13 @@ section.hero .hero-image-caption {
   z-index: 2;
   bottom: 20%;
   left: 1rem;
-  font-size: 50px;
+  font-size: 8vw;
+  font-family: var(--heading-font-family);
+  text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;
   color: #fff;
 }
 section.hero img {
-  min-height: 100%;
+  height: 100%;
   min-width: 100%;
   -o-object-fit: cover;
      object-fit: cover;
