@@ -1,0 +1,15 @@
+/**
+ * The following styles get applied inside the editor only.
+ *
+ * Replace them with your own styles or remove the file completely.
+ */
+
+.wp-block-create-block-hero {
+  border: 1px dotted #f00;
+}
+
+.hero-images-grid {
+  display: grid;
+  grid-template-columns: repeat(200px, 1fr);
+  gap: 10px;
+}

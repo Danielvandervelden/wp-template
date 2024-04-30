@@ -1,1 +1,0 @@
-.images-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));grid-gap:20px;margin-bottom:20px}.image-grid-cell{position:relative}.remove-image-button{background-color:hsla(0,0%,100%,.8);border-radius:50%;position:absolute;right:0;top:0}.images-grid{border:1px solid #ddd}

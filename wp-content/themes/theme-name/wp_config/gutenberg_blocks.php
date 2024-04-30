@@ -17,7 +17,7 @@ function allowed_block_types( $allowed_block_types, $block_editor_context ) {
     'core/image',       // Image block
     'core/list',        // List block
     'core/paragraph',   // Paragraph block
-    'hero/hero-block',  // Hero block
+    'custom-block/hero',  // Hero block
   );
 
   return $allowed_block_types;
