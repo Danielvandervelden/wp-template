@@ -18,8 +18,6 @@ import { useBlockProps } from "@wordpress/block-editor";
 export default function save({ attributes }) {
   const { images } = attributes;
 
-  console.log(attributes);
-
   return (
     <section className="hero">
       {images.map((image, index) => {

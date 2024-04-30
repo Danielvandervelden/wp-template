@@ -222,7 +222,6 @@ function save({
   const {
     images
   } = attributes;
-  console.log(attributes);
   return (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("section", {
     className: "hero"
   }, images.map((image, index) => {
