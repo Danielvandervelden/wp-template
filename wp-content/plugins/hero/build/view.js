@@ -1,9 +1,1 @@
-/******/ (() => { // webpackBootstrap
-var __webpack_exports__ = {};
-/*!*********************!*\
-  !*** ./src/view.js ***!
-  \*********************/
-console.log("TESTING");
-/******/ })()
-;
-//# sourceMappingURL=view.js.map
+(()=>{class s{constructor(){this.slides=Array.from(document.querySelectorAll(".hero-image-wrapper")),this.currentSlide=0,this.nextButton=document.querySelector(".controls button:last-child"),this.prevButton=document.querySelector(".controls button:first-child"),this.activeClass="active",this.transitionInClass="transition-in",this.transitionOutClass="transition-out",this.allowedToChange=!0,this.init()}init(){this.addEventListeners()}addEventListeners(s){this.nextButton.addEventListener("click",(s=>{this.allowedToChange&&(this.showSlide("next"),this.allowedToChange=!1)})),this.prevButton.addEventListener("click",(s=>{this.allowedToChange&&(this.showSlide("prev"),this.allowedToChange=!1)}))}slideIndexToShow(s){return"next"===s?this.currentSlide+1===this.slides.length?0:this.currentSlide+1:this.currentSlide-1<0?this.slides.length-1:this.currentSlide-1}showSlide(s){const t=this.slides[this.currentSlide],e=this.slides[this.slideIndexToShow(s)];t.classList.add(this.transitionOutClass),t.classList.remove(this.transitionInClass),e.classList.add(this.transitionInClass),e.classList.add(this.activeClass),setTimeout((()=>{this.removeClasses(t),this.allowedToChange=!0}),300),this.currentSlide=this.slideIndexToShow(s)}removeClasses(s){s.classList.remove(this.activeClass),s.classList.remove(this.transitionInClass),s.classList.remove(this.transitionOutClass)}}document.querySelectorAll(".hero").forEach((t=>new s(t)))})();

@@ -22,13 +22,14 @@ section {
 
     &:after {
       content: '';
+      pointer-events: none;
       display: block;
       width: 100%;
-      height: 80%;
+      height: 85%;
       position: absolute;
       top: 0;
       left: 0;
-      background: linear-gradient(180deg, rgba(0,0,0,0.6) 0%, rgba(0,0,0,0) 100%);
+      background: linear-gradient(180deg, rgba(0,0,0,0.8) 0%, rgba(0,0,0,0) 100%);
     }
 
     .hero-image-wrapper {
@@ -49,10 +50,24 @@ section {
 
       &.active {
         display: block;
+
+        .hero-image-caption {
+          animation: transitionIn .2s forwards;
+          animation-delay: .3s;
+        }
+      }
+
+      &.transition-out {
+        animation: slideOut .3s forwards;
+      }
+
+      &.transition-in {
+        animation: slideIn .3s forwards;
       }
     }
 
     .hero-image-caption {
+      opacity: 0;
       position: absolute;
       z-index: 2;
       bottom: 20%;
@@ -97,5 +112,68 @@ section {
         text-decoration: none;
       }
     }
+  }
+
+  .controls {
+    position: absolute;
+    bottom: 1rem;
+    left: 1rem;
+    display: flex;
+    gap: 1rem;
+
+    span {
+      position: absolute;
+      opacity: 0;
+      pointer-events: none;
+    }
+
+    button {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 100px;
+      height: 100px;
+      background-color: transparent;
+      border: 2px solid #FFF;
+      color: #FFF;
+      cursor: pointer;
+      backdrop-filter: blur(5px);
+
+      &:hover {
+        background-color: rgba(0, 0, 0, .3);
+      }
+    }
+  }
+}
+
+@keyframes slideOut {
+  from {
+    transform: translateX(0);
+  }
+
+  to {
+    transform: translateX(-100%);
+  }
+}
+
+@keyframes slideIn {
+  from {
+    transform: translateX(100%);
+  }
+
+  to {
+    transform: translateX(0);
+  }
+}
+
+@keyframes transitionIn {
+  from {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
   }
 }

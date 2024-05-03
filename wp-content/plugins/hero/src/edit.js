@@ -18,6 +18,9 @@ import {
 } from "@wordpress/block-editor";
 
 import { Button } from "@wordpress/components";
+import { close } from "@wordpress/icons";
+import chevronLeft from "../assets/chevron-left.svg";
+import chevronRight from "../assets/chevron-right.svg";
 
 /**
  * Lets webpack process CSS, SASS or SCSS files referenced in JavaScript files.
@@ -80,25 +83,78 @@ export default function Edit({ attributes, setAttributes }) {
           render={({ open }) => <button onClick={open}>Select images</button>}
         />
       </MediaUploadCheck>
-      <div className={"hero-images-grid"}>
-        {images?.map((image, index) => (
-          <div className="hero-image-wrapper">
-            <Button
-              onClick={() => onRemoveImage(index)}
-              icon="no-alt"
-              label="Delete image"
-              className="remove-image-button"
-              isDestructive
-            />
-            <img src={image.url} alt={image.alt} />
-            <input
-              type="text"
-              value={image.caption}
-              onChange={(e) => onUpdateCaption(index, e.target.value)}
-              placeholder={__("Add caption", "hero")} />
-          </div>
-        ))}
-      </div>
+      <section className="hero">
+        <div className="hero-images">
+          {images.length &&
+            images.map((image, index) => {
+              return (
+                <div
+                  key={index}
+                  className={`hero-image-wrapper ${
+                    index === 0 ? "active" : ""
+                  }`}
+                >
+                  <Button
+                    onClick={() => onRemoveImage(index)}
+                    icon={close} // Use the imported icon here
+                    label={__("Delete image", "text-domain")}
+                    className="remove-image-button"
+                    isDestructive
+                  />
+
+                  <img
+                    src={image.url}
+                    alt={image.alt}
+                    data-caption={image.caption}
+                  />
+                  <input
+                    className="caption-input"
+                    type="text"
+                    value={image.caption}
+                    onChange={(e) => onUpdateCaption(index, e.target.value)}
+                    placeholder={__("Add caption", "hero")}
+                  />
+                </div>
+              );
+            })}
+        </div>
+        <div className="controls">
+          <button>
+            <span>Previous</span>
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke-width="1.5"
+              stroke="#FFF"
+              class="w-6 h-6"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                d="M15.75 19.5 8.25 12l7.5-7.5"
+              />
+            </svg>
+          </button>
+          <button>
+            <span>Next</span>
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke-width="1.5"
+              stroke="#FFF"
+              class="w-6 h-6"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                d="m8.25 4.5 7.5 7.5-7.5 7.5"
+              />
+            </svg>
+          </button>
+        </div>
+      </section>
     </div>
   );
 }

@@ -23,3 +23,12 @@
 [29-Apr-2024 21:31:52 UTC] PHP Parse error:  syntax error, unexpected identifier "wp_register_style" in C:\xampp\htdocs\wp-template\wp-content\plugins\hero-block\hero-block.php on line 27
 [29-Apr-2024 21:31:52 UTC] PHP Notice:  Function is_embed was called incorrectly. Conditional query tags do not work before the query is run. Before then, they always return false. Please see <a>Debugging in WordPress</a> for more information. (This message was added in version 3.1.0.) in C:\xampp\htdocs\wp-template\wp-includes\functions.php on line 6078
 [29-Apr-2024 21:31:52 UTC] PHP Notice:  Function is_search was called incorrectly. Conditional query tags do not work before the query is run. Before then, they always return false. Please see <a>Debugging in WordPress</a> for more information. (This message was added in version 3.1.0.) in C:\xampp\htdocs\wp-template\wp-includes\functions.php on line 6078
+[03-May-2024 19:11:01 UTC] PHP Warning:  Attempt to read property "title" on null in C:\xampp\htdocs\wp-template\wp-includes\class-wp-customize-widgets.php on line 905
+[03-May-2024 19:12:19 UTC] PHP Warning:  Attempt to read property "title" on null in C:\xampp\htdocs\wp-template\wp-includes\class-wp-customize-widgets.php on line 905
+[03-May-2024 19:12:48 UTC] PHP Warning:  Attempt to read property "title" on null in C:\xampp\htdocs\wp-template\wp-includes\class-wp-customize-widgets.php on line 905
+[03-May-2024 19:13:06 UTC] PHP Warning:  Attempt to read property "title" on null in C:\xampp\htdocs\wp-template\wp-includes\class-wp-customize-widgets.php on line 905
+[03-May-2024 19:47:21 UTC] PHP Warning:  Attempt to read property "title" on null in C:\xampp\htdocs\wp-template\wp-includes\class-wp-customize-widgets.php on line 905
+[03-May-2024 19:47:33 UTC] PHP Warning:  Attempt to read property "title" on null in C:\xampp\htdocs\wp-template\wp-includes\class-wp-customize-widgets.php on line 905
+[03-May-2024 19:51:35 UTC] PHP Warning:  Attempt to read property "title" on null in C:\xampp\htdocs\wp-template\wp-includes\class-wp-customize-widgets.php on line 905
+[03-May-2024 19:51:44 UTC] PHP Warning:  Attempt to read property "title" on null in C:\xampp\htdocs\wp-template\wp-includes\class-wp-customize-widgets.php on line 905
+[03-May-2024 19:55:36 UTC] PHP Warning:  Attempt to read property "title" on null in C:\xampp\htdocs\wp-template\wp-includes\class-wp-customize-widgets.php on line 905

@@ -13,13 +13,16 @@
   <header class="header-container">
     <div class="logo-container">
       <?php 
-      if (function_exists('the_custom_logo')) {
-        the_custom_logo();
-      }
+        $custom_logo_url = get_theme_mod('custom_logo');
+        if ($custom_logo_url) {
+          // Output the custom logo image
+          echo '<img src="' . esc_url($custom_logo_url) . '" alt="' . esc_attr(get_bloginfo('name')) . ' Logo">';
+        }
       ?>
     </div>
     <div id="header-divider"></div>
-    <button id="mobile-menu-trigger" aria-controls="navigation" aria-expanded="false"><i class="icon-hamburger"></i></button>
+    <button id="mobile-menu-trigger" aria-controls="navigation" aria-expanded="false"><i
+        class="icon-hamburger"></i></button>
     <?php 
     if (has_nav_menu('header-menu')) {
       wp_nav_menu(array(

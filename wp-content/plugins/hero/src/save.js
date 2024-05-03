@@ -5,6 +5,8 @@
  * @see https://developer.wordpress.org/block-editor/reference-guides/packages/packages-block-editor/#useblockprops
  */
 import { useBlockProps } from "@wordpress/block-editor";
+import chevronLeft from "../assets/chevron-left.svg";
+import chevronRight from "../assets/chevron-right.svg";
 
 /**
  * The save function defines the way in which the different attributes should
@@ -20,20 +22,53 @@ export default function save({ attributes }) {
 
   return (
     <section className="hero">
-      {images.map((image, index) => {
-        console.log(index);
-        return (
+      <div className="hero-images">
+        {images.map((image, index) => (
           <div
+            className={`hero-image-wrapper ${index === 0 ? "active" : ""}`}
             key={index}
-            className={`hero-image-wrapper ${
-              index === 0 ? "active" : ""
-            }`}
           >
-            <img src={image.url} alt={image.alt} data-caption={image.caption} />
-            {image.caption && <span className="hero-image-caption">{image.caption}</span>}
+            <img src={image.url} alt={image.alt}  data-caption={image.caption} />
+            <span className="hero-image-caption">{image.caption}</span>
           </div>
-        );
-      })}
+        ))}
+      </div>
+      <div className="controls">
+        <button>
+          <span>Previous</span>
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke-width="1.5"
+            stroke="#FFF"
+            class="w-6 h-6"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              d="M15.75 19.5 8.25 12l7.5-7.5"
+            />
+          </svg>
+        </button>
+        <button>
+          <span>Next</span>
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke-width="1.5"
+            stroke="#FFF"
+            class="w-6 h-6"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              d="m8.25 4.5 7.5 7.5-7.5 7.5"
+            />
+          </svg>
+        </button>
+      </div>
     </section>
   );
 }

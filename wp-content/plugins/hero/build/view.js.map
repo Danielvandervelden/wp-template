@@ -1,1 +1,0 @@
-{"version":3,"file":"view.js","mappings":";;;;;AAAAA,OAAO,CAACC,GAAG,CAAC,SAAS,CAAC,C","sources":["webpack://hero/./src/view.js"],"sourcesContent":["console.log(\"TESTING\");\n"],"names":["console","log"],"sourceRoot":""}
