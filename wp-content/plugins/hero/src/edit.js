@@ -19,8 +19,6 @@ import {
 
 import { Button } from "@wordpress/components";
 import { close } from "@wordpress/icons";
-import chevronLeft from "../assets/chevron-left.svg";
-import chevronRight from "../assets/chevron-right.svg";
 
 /**
  * Lets webpack process CSS, SASS or SCSS files referenced in JavaScript files.
