@@ -32,3 +32,5 @@
 [03-May-2024 19:51:35 UTC] PHP Warning:  Attempt to read property "title" on null in C:\xampp\htdocs\wp-template\wp-includes\class-wp-customize-widgets.php on line 905
 [03-May-2024 19:51:44 UTC] PHP Warning:  Attempt to read property "title" on null in C:\xampp\htdocs\wp-template\wp-includes\class-wp-customize-widgets.php on line 905
 [03-May-2024 19:55:36 UTC] PHP Warning:  Attempt to read property "title" on null in C:\xampp\htdocs\wp-template\wp-includes\class-wp-customize-widgets.php on line 905
+[04-May-2024 09:10:54 UTC] PHP Warning:  Attempt to read property "title" on null in C:\xampp\htdocs\wp-template\wp-includes\class-wp-customize-widgets.php on line 905
+[04-May-2024 09:13:32 UTC] PHP Warning:  Attempt to read property "title" on null in C:\xampp\htdocs\wp-template\wp-includes\class-wp-customize-widgets.php on line 905
