@@ -21,3 +21,6 @@ function load_google_fonts() {
 add_action( 'wp_enqueue_scripts', 'load_google_fonts' );
 
 add_theme_support( 'menus' );
+
+// Import Gutenberg block extensions
+include get_template_directory() . '/wp_config/blocks_extensions/core_columns.php';

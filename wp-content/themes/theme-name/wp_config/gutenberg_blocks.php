@@ -1,4 +1,4 @@
-<?php 
+<?php
 
 /**
  * Filters the list of allowed block types in the block editor.
@@ -10,19 +10,25 @@
  *
  * @return array The array of allowed block types.
  */
-function allowed_block_types( $allowed_block_types, $block_editor_context ) {
+function allowed_block_types($allowed_block_types, $block_editor_context)
+{
 
   $allowed_block_types = array(
     'core/heading',     // Heading block
     'core/image',       // Image block
     'core/list',        // List block
     'core/paragraph',   // Paragraph block
+    'core/column',      // Column block
+    'core/columns',     // Columns block
+    'core/button',    // Button block
+    'core/buttons',   // Buttons block
     'custom-block/hero',  // Hero block
+    'custom-block/wysiwyg',  // Wysiwyg block
   );
 
   return $allowed_block_types;
 }
-add_filter( 'allowed_block_types_all', 'allowed_block_types', 10, 2 );
+add_filter('allowed_block_types_all', 'allowed_block_types', 10, 2);
 
 // core/legacy-widget
 // core/widget-group

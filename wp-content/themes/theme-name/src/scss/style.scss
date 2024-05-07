@@ -2,6 +2,7 @@
 @import "./typography";
 @import "./normalize";
 @import './layout';
+@import './buttons';
 @import "./parts/header";
 
 /* Default properties for mobile devices */
@@ -27,12 +28,14 @@
     --color-secondary: #A9CBB7;
     --color-tertiary: #D1B1C8;
     --color-quarternary: #FB4D3D;
+    --color-dark: #5E565A;
     --color-success: #28a745;
     --color-info: #17a2b8;
     --color-warning: #ffc107;
     --color-danger: #dc3545;
-    --default: #5E565A;
+    --default: #FFF;
     --color-link: var(--color-primary);
+    --color-background: #333;
 
     /* Spacing */
     --padding-sides: 1rem;
@@ -54,6 +57,8 @@
 body {
     margin: 0;
     padding: 0;
+    background-color: var(--color-background);
+    color: var(--default);
 }
 
 #backdrop {

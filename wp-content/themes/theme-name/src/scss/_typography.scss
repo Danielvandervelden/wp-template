@@ -2,36 +2,35 @@ body {
   font-size: var(--font-size-base);
   color: var(--color-text);
   font-family: var(--font-family), Helvetica, Arial, sans-serif;
+  line-height: 1.5;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--heading-font-family);
 }
 
 h1 {
   font-size: var(--font-size-h1);
-  color: var(--color-dark);
 }
 
 h2 {
   font-size: var(--font-size-h2);
-  color: var(--color-dark);
 }
 
 h3 {
   font-size: var(--font-size-h3);
-  color: var(--color-dark);
 }
 
 h4 {
   font-size: var(--font-size-h4);
-  color: var(--color-dark);
 }
 
 h5 {
   font-size: var(--font-size-h5);
-  color: var(--color-dark);
 }
 
 h6 {
   font-size: var(--font-size-h6);
-  color: var(--color-dark);
 }
 
 p {
