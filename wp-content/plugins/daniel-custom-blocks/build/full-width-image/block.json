@@ -1,0 +1,29 @@
+{
+  "$schema": "https://schemas.wp.org/trunk/block.json",
+  "apiVersion": 3,
+  "name": "daniel/full-width-image",
+  "version": "0.1.0",
+  "title": "Full Width Image",
+  "category": "widgets",
+  "icon": "smiley",
+  "description": "A full width image block.",
+  "example": {},
+  "attributes": {
+    "image_url": {
+      "type": "string",
+      "default": ""
+    },
+    "image_alt": {
+      "type": "string",
+      "default": ""
+    }
+  },
+  "supports": {
+    "html": false
+  },
+  "textdomain": "full-width-image",
+  "editorScript": "file:./index.js",
+  "editorStyle": "file:./index.css",
+  "style": "file:./style-index.css",
+  "viewScript": "file:./view.js"
+}

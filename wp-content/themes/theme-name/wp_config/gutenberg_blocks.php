@@ -22,8 +22,9 @@ function allowed_block_types($allowed_block_types, $block_editor_context)
     'core/columns',     // Columns block
     'core/button',    // Button block
     'core/buttons',   // Buttons block
-    'custom-block/hero',  // Hero block
-    'custom-block/wysiwyg',  // Wysiwyg block
+    'core/shortcode', // Shortcode block
+    'daniel/hero',  // Hero block
+    'daniel/full-width-image', // Full Width Image block
   );
 
   return $allowed_block_types;

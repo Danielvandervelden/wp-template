@@ -1,0 +1,76 @@
+@use "../variables";
+
+.page-footer {
+    background-color: var(--color-secondary);
+    padding: 4rem 0.5rem;
+    display: flex;
+    justify-content: center;
+    color: var(--color-dark);
+
+    @media screen and (max-width: variables.$breakpoint-max-tablet) {
+        flex-direction: column;
+        gap: 1rem;
+
+        .footer-column {
+          text-align: center;
+        }
+    }
+    .footer-column {
+        flex: 1;
+        display: flex;
+        align-items: center;
+        justify-content: top;
+        flex-direction: column;
+    }
+
+    @media screen and (max-width: variables.$breakpoint-max-mobile) {
+        padding: 2rem 0.5rem;
+    }
+
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6 {
+        margin: 0 0 1rem;
+    }
+
+    .contact {
+        display: flex;
+        gap: 1rem;
+        justify-content: center;
+        align-items: center;
+
+        a {
+            text-decoration: underline;
+            color: var(--color-dark);
+        }
+    }
+
+    .social-links {
+        display: flex;
+        gap: 1rem;
+        margin-top: 1rem;
+    }
+
+    .footer-menu {
+        ul {
+            display: flex;
+            flex-direction: column;
+            gap: .5rem;
+            padding: 0;
+            margin: 0;
+            list-style: none;
+
+            a {
+                color: var(--color-dark);
+                text-decoration: underline;
+            }
+        }
+
+        .menu-item-has-children {
+            display: none;
+        }
+    }
+}

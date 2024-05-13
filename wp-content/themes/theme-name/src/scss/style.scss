@@ -4,6 +4,7 @@
 @import './layout';
 @import './buttons';
 @import "./parts/header";
+@import "./parts/footer";
 
 /* Default properties for mobile devices */
 :root {
@@ -12,8 +13,8 @@
     --font-size-lg: 1.25rem; /* 20px */
     --font-size-sm: 0.875rem; /* 14px */
     --font-size-xs: 0.75rem; /* 12px */
-    --font-family: "Open Sans", sans-serif;
-    --heading-font-family: "Pacifico", cursive;
+    --font-family: "Roboto", sans-serif;
+    --heading-font-family: "Poetsen One", sans-serif;
 
     /* Heading sizes */
     --font-size-h1: 2.5rem;

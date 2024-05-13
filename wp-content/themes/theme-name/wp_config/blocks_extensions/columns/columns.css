@@ -1,0 +1,12 @@
+.wp-block-columns,
+[data-section] {
+  box-sizing: border-box;
+  margin: 4rem 0;
+}
+
+@media screen and (max-width: 1024px) {
+  .wp-block-columns,
+  [data-section] {
+    margin: 2rem 0;
+  }
+}

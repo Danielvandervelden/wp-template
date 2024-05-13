@@ -4,23 +4,12 @@ main#primary {
   padding: 0 var(--padding-sides);
 }
 
-/** Gutenberg block layout styles */
-.wp-block-columns {
-  padding: 2rem .5rem;
-  margin: 0;
+/**
+ * Very specific styling for the full-width-image when it's the last section in main
+ */
 
-  @media screen and (min-width: variables.$breakpoint-min-tablet) {
-    padding: 4rem .5rem;
-  }
-}
-
-.wp-block-column {
-  
-  > *:first-child {
-    margin-top: 0;
-  }
-
-  > *:last-child {
+ main div:last-of-type {
+  &.wp-block-daniel-full-width-image {
     margin-bottom: 0;
   }
-}
+ }

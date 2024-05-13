@@ -1,0 +1,56 @@
+/**
+ * The following styles get applied inside the editor only.
+ *
+ * Replace them with your own styles or remove the file completely.
+ */
+
+body {
+  section.hero {
+    height: initial;
+    width: 100%;
+    transform: none;
+    position: initial;
+    border: 1px solid #000;
+    padding: .5rem;
+    border-radius: 8px;
+
+    .remove-image-button {
+      position: absolute;
+      background-color: rgba(255, 255, 255, .8);
+      top: 1rem;
+      right: 1rem;
+    }
+
+    &:after {
+      display: none;
+    }
+
+    .hero-images {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+      gap: 1rem;
+    }
+
+    .hero-image-wrapper {
+      display: block !important;
+      position: relative;
+
+      img {
+        max-width: 100%;
+        vertical-align: top;
+      }
+    }
+
+    .caption-input {
+      position: absolute;
+      z-index: 10;
+      bottom: 10%;
+      left: 1rem;
+      font-size: 1rem;
+    }
+
+    .controls {
+      display: none;
+    }
+  }
+}

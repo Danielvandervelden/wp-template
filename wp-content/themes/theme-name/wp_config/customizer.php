@@ -60,3 +60,62 @@ function socials_register( $wp_customize ) {
 }
 
 add_action('customize_register', 'socials_register');
+
+/** 
+ * Register some custom fillable fields in the customizer
+ */
+
+function register_custom_fields($wp_customize) {
+  $wp_customize->add_setting('address', array(
+    'default' => '',
+    'transport' => 'refresh',
+  )
+  );
+
+  // Add Control
+  $wp_customize->add_control('address_control', array(
+    'label' => __('Address', 'mytheme'),
+    'section' => 'title_tagline',
+    'settings' => 'address',
+    'type' => 'textarea', // Specifies a textarea input
+  )
+  );
+
+  $wp_customize->add_setting('email_address', [
+    'default' => '',
+    'transport' => 'refresh',
+  ]);
+
+  $wp_customize->add_control('email_address_control', [
+    'label' => __('Email Address', 'theme-name'),
+    'section' => 'title_tagline', 
+    'settings' => 'email_address',
+    'type' => 'email',
+  ]);
+
+  $wp_customize->add_setting('phone_number', [
+    'default' => '',
+    'transport' => 'refresh',
+  ]);
+
+  $wp_customize->add_control('phone_number_control', [
+    'label' => __('Phone Number', 'theme-name'),
+    'section' => 'title_tagline',
+    'settings' => 'phone_number',
+    'type' => 'text',
+  ]);
+
+  $wp_customize->add_setting('whatsapp', [
+    'default' => '',
+    'transport' => 'refresh',
+  ]);
+
+  $wp_customize->add_control('whatsapp_control', [
+    'label' => __('What\'s App', 'ferme'),
+    'section' => 'title_tagline',  // You can use a different section or create a new one
+    'settings' => 'whatsapp',
+    'type' => 'text',
+  ]);
+}
+
+add_action('customize_register', 'register_custom_fields');

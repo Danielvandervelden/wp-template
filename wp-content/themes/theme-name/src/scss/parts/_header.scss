@@ -4,16 +4,30 @@
 .header-container {
     display: flex;
     align-items: center;
-    padding: 0 var(--padding-sides);
+    padding: 0.3rem var(--padding-sides);
     position: fixed;
     z-index: 100;
     top: 0;
     left: 0;
     width: 100%;
+
+    &.sticky {
+        background-color: rgba(0, 0, 0, 0.5);
+        backdrop-filter: blur(5px);
+
+        .logo-container img {
+            width: 60px;
+        }
+    }
 }
 
 .logo-container {
     flex: 1 0 0;
+
+    a {
+        display: flex;
+        align-items: center;
+    }
 
     img {
         width: 100px;
@@ -22,8 +36,12 @@
 }
 
 .menu-container {
-    ul {
+    ul#menu-main-menu {
         list-style: none;
+
+        li.current-menu-item a {
+          color: var(--color-secondary);
+      }
     }
 }
 
@@ -32,57 +50,121 @@
 }
 
 @media (max-width: variables.$breakpoint-max-tablet) {
-    #mobile-menu-trigger {
+    .logo-container {
+        img {
+            width: 70px;
+        }
+    }
+
+    #mobile-menu-open,
+    #mobile-menu-close {
+        align-items: center;
         border: 0;
         background-color: transparent;
         font-size: 1.5rem;
+        color: #fff;
 
         &:active {
             color: var(--color-primary);
         }
     }
 
-    .menu-container {
+    #mobile-menu-open {
+        display: flex;
+        flex-direction: column;
+
+        span {
+          font-size: .5rem;
+        }
+    }
+
+    #mobile-menu-close {
+        display: none;
+    }
+
+    .mobile-menu-active {
+        #mobile-menu-open {
+            display: none;
+        }
+
+        #mobile-menu-close {
+            display: flex;
+        }
+    }
+
+    #navigation {
         position: fixed;
         z-index: 20;
         left: 0;
         top: 0;
         height: 100vh;
-        background-color: #fff;
+        background-color: var(--color-dark);
         width: 80vw;
         box-shadow: 0 0 1rem rgba(0, 0, 0, 0.1);
         transform: translateX(-100%);
         transition-timing-function: cubic-bezier(0.075, 0.82, 0.165, 1);
+        transition-delay: 0.1s;
 
         .mobile-menu-active & {
             transform: translateX(0);
+        }
+
+        .header-menu {
+            li {
+                a {
+                    &:focus {
+                        text-decoration: none;
+                    }
+                }
+
+                &.current-menu-item a {
+                    color: var(--color-secondary);
+                }
+
+                + li {
+                    margin-top: 1rem;
+                }
+            }
+        }
+    }
+
+    .mobile-menu-logo-wrapper {
+        display: flex;
+        justify-content: center;
+        border-bottom: 1px solid var(--color-primary);
+        padding: 1rem 0;
+
+        img {
+            max-width: 100px;
         }
     }
 }
 
 @media (min-width: variables.$breakpoint-min-desktop) {
-    #mobile-menu-trigger {
+    #mobile-menu-open,
+    #mobile-menu-close,
+    .mobile-menu-logo-wrapper {
         display: none;
     }
 
     #menu-main-menu {
         display: flex;
         gap: 1rem;
+        margin: 0;
 
         > li {
-            padding: 1rem;
-            border-radius: 0.5rem;
-
+          display: flex;
+          align-items: center;
+          
             > a {
                 color: #fff;
+                padding: 1rem;
             }
 
             &:hover {
-                background-color: var(--color-primary);
-                color: #fff;
-
                 > a {
-                  color: var(--default);
+                    color: var(--default);
+                    color: #fff;
                 }
 
                 &:after {
@@ -94,7 +176,7 @@
 
         /** Every menu item with children needs the icon */
         .menu-item-has-children {
-            @include mixins.icon("\e904", #FFF);
+            @include mixins.icon("\e904", #fff);
 
             ul {
                 position: absolute;
@@ -102,9 +184,10 @@
                 opacity: 0;
                 visibility: hidden;
                 transform: translateY(10px);
-                background-color: var(--color-light);
+                background-color: #FFF;
                 border-radius: 0.5rem;
                 padding: 0;
+                margin: 0;
             }
 
             &:hover {
@@ -126,24 +209,14 @@
                 top: 100%;
                 right: 0;
                 width: 100%;
+                list-style: none;
+                margin: 0;
 
                 li {
                     white-space: nowrap;
                     padding: 1rem;
                     border-left: 1px solid var(--color-primary);
                     border-right: 1px solid var(--color-primary);
-
-                    &:first-of-type {
-                        padding-top: 1rem;
-                        border-top: 1px solid var(--color-primary);
-                        border-radius: 0;
-                    }
-
-                    &:last-of-type {
-                        padding-bottom: 1rem;
-                        border-bottom: 1px solid var(--color-primary);
-                        border-radius: 0 0 0.5rem 0.5rem;
-                    }
 
                     &:hover {
                         &:after {
@@ -152,7 +225,7 @@
                     }
 
                     &:after {
-                      color: var(--default);
+                        color: var(--default);
                     }
 
                     /** Level 2 menus and beyond */
@@ -161,11 +234,13 @@
                         right: 100%;
                         box-shadow: none;
                         border-radius: 0.5rem 0 0 0.5rem;
-                        background-color: var(--color-primary);
+                        background-color: #FFF;
+                        list-style: none;
+                        margin: 0;
 
                         li {
                             a {
-                                color: var(--default);
+                                color: var(--color-dark);
                             }
 
                             &:first-of-type {
@@ -182,9 +257,11 @@
                 /** Direct children of the first menu item */
                 > li {
                     padding: 1rem;
-                    background-color: var(--color-primary);
-                    
-                    > a {color: var(--default);}
+                    background-color: #FFF;
+
+                    > a {
+                        color: var(--color-dark);
+                    }
 
                     &:hover {
                         &:last-of-type {
