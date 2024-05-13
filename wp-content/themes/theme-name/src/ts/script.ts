@@ -1,8 +1,9 @@
 import { MobileMenu } from "./mobile-menu";
 
-const mobileMenuTrigger = document.querySelector("#mobile-menu-trigger");
+const mobileMenuOpen = document.querySelector("#mobile-menu-open");
+const mobileMenuClose = document.querySelector("#mobile-menu-close");
 
-if (mobileMenuTrigger) {
-    const mobileMenuInstance = new MobileMenu(mobileMenuTrigger);
+if (mobileMenuOpen && mobileMenuClose) {
+    const mobileMenuInstance = new MobileMenu(mobileMenuOpen, mobileMenuClose);
     mobileMenuInstance.init();
 }

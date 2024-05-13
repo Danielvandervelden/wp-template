@@ -111,7 +111,7 @@ function register_custom_fields($wp_customize) {
   ]);
 
   $wp_customize->add_control('whatsapp_control', [
-    'label' => __('What\'s App', 'ferme'),
+    'label' => __('What\'s App', 'theme-name'),
     'section' => 'title_tagline',  // You can use a different section or create a new one
     'settings' => 'whatsapp',
     'type' => 'text',

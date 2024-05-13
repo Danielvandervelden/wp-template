@@ -4,7 +4,7 @@
  *
  * This is the template that displays the front page by default.
  *
- * @package fermedeladhuys
+ * @package theme-name
  */
 
 get_header(); ?>
