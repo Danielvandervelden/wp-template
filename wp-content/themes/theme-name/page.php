@@ -1,8 +1,6 @@
 <?php
 /**
- * The template for displaying the front page
- *
- * This is the template that displays the front page by default.
+ * The template for displaying any single page.
  *
  * @package theme-name
  */

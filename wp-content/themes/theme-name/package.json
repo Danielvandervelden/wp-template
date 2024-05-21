@@ -1,5 +1,5 @@
 {
-  "name": "themename",
+  "name": "theme-name",
   "devDependencies": {
     "@babel/preset-env": "^7.24.3",
     "@types/bun": "latest",
