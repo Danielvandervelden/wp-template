@@ -1,15 +1,15 @@
-=== Rank Math SEO with AI Best SEO Tools ===
+=== Rank Math SEO – AI SEO Tools to Dominate SEO Rankings ===
 Contributors: rankmath
 Plugin link: https://rankmath.com/?utm_source=LP&utm_campaign=WP
 Tags: seo, sitemap, google search console, schema, redirection, WordPress SEO
-Tested up to: 6.5
+Tested up to: 6.7
 Requires at least: 6.3
 Requires PHP: 7.4
-Stable tag: 1.0.218
+Stable tag: 1.0.232
 License: GPLv3 or later
 License URI: https://www.gnu.org/licenses/gpl-3.0.txt
 
-Rank Math SEO is the Best WordPress SEO plugin with the features of many SEO and AI SEO tools in a single package to help multiply your SEO traffic.
+Rank Math SEO is the best WordPress SEO plugin with the features of many SEO and AI SEO tools in a single package to help multiply your SEO traffic and improve your site's SEO ranking.
 
 == Description ==
 
@@ -24,7 +24,7 @@ Rank Math SEO is the Best WordPress SEO plugin with the features of many SEO and
 
 <a href="https://rankmath.com/wordpress/plugin/seo-suite/?utm_source=LP&utm_campaign=WP#features" target="_blank">Features</a> | <a href="https://rankmath.com/wordpress/plugin/seo-suite/?utm_source=LP&utm_campaign=WP#reasons" target="_blank">Why Choose Rank Math?</a> | <a href="https://rankmath.com/wordpress/plugin/seo-suite/?utm_source=LP&utm_campaign=WP#comparison" target="_blank">Compare</a> | <a href="https://rankmath.com/wordpress/plugin/seo-suite/?utm_source=LP&utm_campaign=WP#screenshots" target="_blank">Screenshots</a> | <a href="https://rankmath.com/wordpress/plugin/seo-suite/?utm_source=LP&utm_campaign=WP#benefits" target="_blank">Benefits</a>
 
-SEO might be the best and most **consistent source of traffic** for one's website, but it's not without its quirks. The constant process of optimizing your posts can sometimes take more time than actually writing the content. **If you always feel that you can do more on the SEO** front for your website but don't have the time, **then Rank Math is what you're looking for.**
+SEO might be the best and most **consistent source of traffic** for one's website, but it's not without its quirks. The constant process of optimizing your posts for SEO can sometimes take more time than actually writing the content. **If you always feel that you can do more on the SEO** front for your website but don't have the time, then **Rank Math SEO is what you're looking for.**
 
 Its host of **intelligent features** brings top SEO capabilities in your hands that were previously out of reach. The **smart automation** features give you the **power of an entire SEO team** with just a few clicks. A **well-thought-out design, powerful features, and years of development** make Rank Math a game-changing SEO plugin that will level the SEO playing field in your favor to help increase traffic.
 
@@ -583,16 +583,14 @@ Please drop us an email at support@rankmath.com and we would be more than happy 
 
 == Changelog ==
 
-= 1.0.218 [May 02, 2024] =
-- Added: [NEW!] Tool to [Generate Image Alt using Content AI](https://rankmath.com/kb/generate-alt-text-with-content-ai/)
-- Improved: Strengthened the security of the plugin's Blocks. Thanks to WordFence for disclosing it responsibly
-- Fixed: Incorrect values were displayed in the [Content AI Results Overview](https://rankmath.com/kb/how-to-use-content-ai/#content-ai-results-overview) when all credits had been used on the site
-- Fixed: [SERP Preview modal](https://rankmath.com/kb/seo-meta-tags/#elementor) was not working in Elementor Editor with WordPress 6.5 after clicking on the Text widget
-- Fixed: [Shorten Long Paragraphs with AI](https://rankmath.com/kb/fix-long-paragraph-test/#shorten-the-highlighted-paragraphs) was not working with WordPress 6.5
-- Fixed: [Short Paragraphs test](https://rankmath.com/kb/score-100-in-tests/#use-of-short-paragraphs) was not working on WooCommerce Products
-- Fixed: [Paginated Sitemap for taxonomies](https://rankmath.com/kb/configure-sitemaps/#categories) was not working when noindexed terms were present in the taxonomy
-- Fixed: PHP deprecated warning related to [Link attributes](https://rankmath.com/kb/nofollow-specific-external-links/) on some setups
-- Fixed: [Filter to add External Sitemap](https://rankmath.com/kb/filters-hooks-api-developer/#add-external-sitemap) was not working when [KML Sitemap](https://rankmath.com/kb/kml-sitemap/) is enabled
+= 1.0.232 [Nov 13, 2024] =
+- Added: Compatibility with WordPress 6.7
+- Improved: Strengthened the security of the [edit .htaccess feature](https://rankmath.com/kb/general-settings/#edit-htaccess) to prevent potential exploitation by users with access to the General Settings. Thanks to Rafie Muhammad (Patchstack) for disclosing it responsibly
+- Improved: [Links Counter](https://rankmath.com/kb/link-counter/) by adding indexes to the `rank_math_internal_links` table
+- Fixed: [Links option](https://rankmath.com/kb/general-settings/#links) was causing issues on sites with a `<script>` tag in the body
+- Fixed: [Yoast Block converter](https://rankmath.com/kb/yoast-seo-migration/#yoast-block-converter) was not detecting blocks within a Group block
+- Fixed: PHP warning displayed on the [Analytics page](https://rankmath.com/kb/analytics/)
+- Fixed: PHP error on the [Error Log page](https://rankmath.com/kb/rank-math-status-and-tools/#error-log) on some setups
 
 
 Full changelog can be found here - **[Rank Math changelog](https://rankmath.com/changelog/?utm_source=Plugin&utm_medium=Changelog&utm_campaign=WP)**

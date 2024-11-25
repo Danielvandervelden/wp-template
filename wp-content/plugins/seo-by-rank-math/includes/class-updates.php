@@ -42,6 +42,7 @@ class Updates implements Runner {
 		'1.0.208'   => 'updates/update-1.0.208.php',
 		'1.0.209'   => 'updates/update-1.0.209.php',
 		'1.0.211'   => 'updates/update-1.0.211.php',
+		'1.0.232'   => 'updates/update-1.0.232.php',
 	];
 
 	/**
@@ -90,7 +91,7 @@ class Updates implements Runner {
 			delete_option( 'rank_math_rollback_version' );
 		}
 
-		update_option( 'rank_math_version', rank_math()->version );
-		update_option( 'rank_math_db_version', rank_math()->db_version );
+		update_option( 'rank_math_version', rank_math()->version, false );
+		update_option( 'rank_math_db_version', rank_math()->db_version, false );
 	}
 }

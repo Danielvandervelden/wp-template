@@ -165,14 +165,6 @@ class Shortcodes {
 			return;
 		}
 
-		$format = nl2br( Helper::get_settings( 'titles.local_address_format' ) );
-		/**
-		 * Allow developer to change the address part format.
-		 *
-		 * @param string $parts_format String format to output the address part.
-		 */
-		$parts_format = $this->do_filter( 'shortcode/contact/address_parts_format', '<span class="contact-address-%1$s">%2$s</span>' );
-
 		$hash = [
 			'streetAddress'   => 'address',
 			'addressLocality' => 'locality',
@@ -180,22 +172,11 @@ class Shortcodes {
 			'postalCode'      => 'postalcode',
 			'addressCountry'  => 'country',
 		];
+		$format = nl2br( Helper::get_settings( 'titles.local_address_format' ) );
+		$data = self::get_address( $hash, $address, $format );		
 		?>
 		<label><?php esc_html_e( 'Address:', 'rank-math' ); ?></label>
-		<address>
-			<?php
-			foreach ( $hash as $key => $tag ) {
-				$value = '';
-				if ( isset( $address[ $key ] ) && ! empty( $address[ $key ] ) ) {
-					$value = sprintf( $parts_format, $tag, $address[ $key ] );
-				}
-
-				$format = str_replace( "{{$tag}}", $value, $format );
-			}
-
-			echo $format;
-			?>
-		</address>
+		<address><?php echo wp_kses_post( $data ); ?></address>
 		<?php
 	}
 
@@ -223,8 +204,8 @@ class Shortcodes {
 
 				printf(
 					'<div class="rank-math-opening-hours"><span class="rank-math-opening-days">%1$s</span><span class="rank-math-opening-time">%2$s</span></div>',
-					join( ', ', $days ),
-					$time
+					esc_html( join( ', ', $days ) ),
+					esc_html( $time )
 				);
 			}
 			?>
@@ -295,7 +276,7 @@ class Shortcodes {
 			?>
 			<div class="rank-math-phone-number type-<?php echo sanitize_html_class( $phone['type'] ); ?>">
 				<label><?php echo esc_html( $label ); ?>:</label>
-				<span><?php echo isset( $phone['number'] ) ? '<a href="tel://' . $number . '">' . $number . '</a>' : ''; ?></span>
+				<span><?php echo isset( $phone['number'] ) ? '<a href="tel://' . esc_attr( $number ) . '">' . esc_html( $number ) . '</a>' : ''; ?></span>
 			</div>
 			<?php
 		endforeach;
@@ -490,5 +471,27 @@ class Shortcodes {
 				'class' => 'wpseo_opening_hours_compat',
 			]
 		);
+	}
+
+	/**
+	 * Get address
+	 * 
+	 * @param array  $hash   Hash of tags.
+	 * @param array  $address Address data.
+	 * @param string $format Address format.
+	 */
+	public static function get_address( $hash, $address, $format ) {
+		$parts_format = apply_filters( 'rank_math/shortcode/contact/address_parts_format', '<span class="contact-address-%1$s">%2$s</span>' );
+
+		foreach ( $hash as $key => $tag ) {
+			$value = '';
+			if ( isset( $address[ $key ] ) && ! empty( $address[ $key ] ) ) {
+				$value = sprintf( $parts_format, $key, $address[ $key ] );
+			}
+
+			$format = str_replace( "{{$tag}}", $value, $format );
+		}
+
+		return $format;
 	}
 }

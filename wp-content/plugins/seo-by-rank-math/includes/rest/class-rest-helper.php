@@ -82,7 +82,12 @@ class Rest_Helper {
 	 * @return true|WP_Error True if the request has read access, WP_Error object otherwise.
 	 */
 	public static function get_post_permissions_check( $request ) {
-		$post = self::get_post( $request->get_param( 'objectID' ) );
+		$object_id = $request->get_param( 'objectID' );
+		if ( $object_id === 0 ) {
+			return true;
+		}
+
+		$post = self::get_post( $object_id );
 		if ( is_wp_error( $post ) ) {
 			return $post;
 		}
@@ -149,12 +154,16 @@ class Rest_Helper {
 	 * @return true|WP_Error True if the request has read access, WP_Error object otherwise.
 	 */
 	public static function get_term_permissions_check( $request ) {
-		$term = self::get_term( $request->get_param( 'objectID' ) );
+		$term_id = $request->get_param( 'objectID' );
+		$term    = self::get_term( $term_id );
 		if ( is_wp_error( $term ) ) {
 			return $term;
 		}
 
-		if ( ! in_array( $term->taxonomy, array_keys( Helper::get_accessible_taxonomies() ), true ) ) {
+		if (
+			! in_array( $term->taxonomy, array_keys( Helper::get_accessible_taxonomies() ), true ) ||
+			! current_user_can( get_taxonomy( $term->taxonomy )->cap->edit_terms, $term_id )
+		) {
 			return new WP_Error(
 				'rest_cannot_edit',
 				__( 'Sorry, you are not allowed to edit this term.', 'rank-math' ),
@@ -200,7 +209,8 @@ class Rest_Helper {
 	 * @return true|WP_Error True if the request has read access, WP_Error object otherwise.
 	 */
 	public static function get_user_permissions_check( $request ) {
-		return Helper::get_settings( 'titles.author_add_meta_box' );
+		$user_id = $request->get_param( 'objectID' );
+		return current_user_can( 'edit_user', $user_id ) && Helper::get_settings( 'titles.author_add_meta_box' );
 	}
 
 	/**
@@ -218,5 +228,17 @@ class Rest_Helper {
 			);
 		}
 		return true;
+	}
+
+	/**
+	 * Checks whether a given request has permission to update settings.
+	 *
+	 * @param WP_REST_Request $request Full details about the request.
+	 *
+	 * @return true|WP_Error True if the request has read access, WP_Error object otherwise.
+	 */
+	public static function can_manage_settings( $request ) {
+		$type = $request->get_param( 'type' );
+		return $type === 'roleCapabilities' ? current_user_can( 'rank_math_role_manager' ) : current_user_can( "rank_math_$type" );
 	}
 }
