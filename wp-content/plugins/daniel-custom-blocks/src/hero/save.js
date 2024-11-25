@@ -5,7 +5,7 @@ export default function save({ attributes }) {
 
   return (
     <section {...useBlockProps.save()} className="hero">
-      <div className="hero-images">
+      <div className="hero-slider">
         {images.map((image, index) => (
           <div
             className={`hero-image-wrapper ${index === 0 ? "active" : ""}`}

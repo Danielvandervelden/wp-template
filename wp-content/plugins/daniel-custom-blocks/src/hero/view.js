@@ -1,90 +1,134 @@
-const ACTIVE_CLASS = "active";
-const SLIDE_IN_FROM_RIGHT_CLASS = "slide-in-from-right";
-const SLIDE_IN_FROM_LEFT_CLASS = "slide-in-from-left";
-const SLIDE_OUT_TO_RIGHT_CLASS = "slide-out-to-right";
-const SLIDE_OUT_TO_LEFT_CLASS = "slide-out-to-left";
-
 class Hero {
   constructor(hero) {
     this.hero = hero;
+    this.slider = hero.querySelector(".hero-slider");
     this.images = hero.querySelectorAll(".hero-image-wrapper");
     this.nextButton = hero.querySelector(".next-slide");
     this.prevButton = hero.querySelector(".prev-slide");
-    this.activeIndex = 0; // Start with the first slide
+    this.activeIndex = 0;
     this.totalSlides = this.images.length;
+    this.isTouching = false;
+    this.touchStartX = 0;
+    this.touchStartY = 0;
+    this.currentTranslate = 0;
+    this.prevTranslate = 0;
+    this.slideWidth = hero.offsetWidth;
+    this.swipeDirection = null;
+    this.directionThreshold = 10;
   }
 
   init() {
-    if (this.totalSlides > 1 && this.nextButton && this.prevButton) {
-      this.addButtonListeners();
-      this.showSlide(this.activeIndex); // Ensure the first slide is active
-    }
+    this.addTouchListener();
+    this.addButtonListeners();
+    this.updateSliderPosition(false);
   }
 
-  showSlide(index) {
-    this.images.forEach((image, i) => {
-      image.classList.remove(
-        ACTIVE_CLASS,
-        SLIDE_IN_FROM_RIGHT_CLASS,
-        SLIDE_IN_FROM_LEFT_CLASS,
-        SLIDE_OUT_TO_RIGHT_CLASS,
-        SLIDE_OUT_TO_LEFT_CLASS
-      );
-
-      if (i === index) {
-        image.classList.add(ACTIVE_CLASS);
-      }
-    });
+  updateSliderPosition(applyTransition = true) {
+    if (applyTransition) {
+      this.slider.style.transition =
+        "transform 0.6s cubic-bezier(0.25, 0.8, 0.25, 1)";
+    } else {
+      this.slider.style.transition = "none";
+    }
+    this.currentTranslate = -this.activeIndex * this.slideWidth;
+    this.slider.style.transform = `translate3d(${this.currentTranslate}px, 0, 0)`;
   }
 
   nextSlide() {
-    const currentImage = this.images[this.activeIndex];
-    currentImage.classList.remove(ACTIVE_CLASS);
-    currentImage.classList.add(SLIDE_OUT_TO_LEFT_CLASS);
-
-    this.activeIndex = (this.activeIndex + 1) % this.totalSlides;
-
-    const nextImage = this.images[this.activeIndex];
-    nextImage.classList.add(ACTIVE_CLASS, SLIDE_IN_FROM_RIGHT_CLASS);
-
-    this.cleanupAnimations(currentImage, nextImage);
+    if (this.activeIndex < this.totalSlides - 1) {
+      this.activeIndex++;
+      this.updateSliderPosition();
+    } else {
+      this.snapToSlide();
+    }
   }
 
   prevSlide() {
-    const currentImage = this.images[this.activeIndex];
-    currentImage.classList.remove(ACTIVE_CLASS);
-    currentImage.classList.add(SLIDE_OUT_TO_RIGHT_CLASS);
-
-    this.activeIndex =
-      (this.activeIndex - 1 + this.totalSlides) % this.totalSlides;
-
-    const prevImage = this.images[this.activeIndex];
-    prevImage.classList.add(ACTIVE_CLASS, SLIDE_IN_FROM_LEFT_CLASS);
-
-    this.cleanupAnimations(currentImage, prevImage);
+    if (this.activeIndex > 0) {
+      this.activeIndex--;
+      this.updateSliderPosition();
+    } else {
+      this.snapToSlide();
+    }
   }
 
-  cleanupAnimations(outgoingImage, incomingImage) {
-    setTimeout(() => {
-      outgoingImage.classList.remove(
-        SLIDE_OUT_TO_LEFT_CLASS,
-        SLIDE_OUT_TO_RIGHT_CLASS
-      );
-      incomingImage.classList.remove(
-        SLIDE_IN_FROM_RIGHT_CLASS,
-        SLIDE_IN_FROM_LEFT_CLASS
-      );
-    }, 300);
+  snapToSlide() {
+    this.activeIndex = Math.round(
+      Math.abs(this.currentTranslate) / this.slideWidth,
+    );
+    this.updateSliderPosition();
+  }
+
+  addTouchListener() {
+    this.hero.addEventListener("touchstart", (e) => this.touchStartHandler(e));
+    this.hero.addEventListener("touchmove", (e) => this.touchMoveHandler(e));
+    this.hero.addEventListener("touchend", () => this.touchEndHandler());
+  }
+
+  touchStartHandler(e) {
+    this.isTouching = true;
+    this.swipeDirection = null;
+    this.touchStartX = e.touches[0].clientX;
+    this.touchStartY = e.touches[0].clientY;
+    this.prevTranslate = this.currentTranslate;
+    this.slider.style.transition = "none";
+  }
+
+  touchMoveHandler(e) {
+    if (!this.isTouching) return;
+
+    const touchCurrentX = e.touches[0].clientX;
+    const touchCurrentY = e.touches[0].clientY;
+    const diffX = touchCurrentX - this.touchStartX;
+    const diffY = touchCurrentY - this.touchStartY;
+
+    if (!this.swipeDirection) {
+      if (
+        Math.abs(diffX) > Math.abs(diffY) &&
+        Math.abs(diffX) > this.directionThreshold
+      ) {
+        this.swipeDirection = "horizontal";
+      } else if (
+        Math.abs(diffY) > Math.abs(diffX) &&
+        Math.abs(diffY) > this.directionThreshold
+      ) {
+        this.swipeDirection = "vertical";
+      }
+    }
+
+    if (this.swipeDirection === "horizontal") {
+      e.preventDefault();
+      this.currentTranslate = this.prevTranslate + diffX;
+      this.slider.style.transform = `translate3d(${this.currentTranslate}px, 0, 0)`;
+    }
+  }
+
+  touchEndHandler() {
+    if (!this.isTouching) return;
+    this.isTouching = false;
+
+    if (this.swipeDirection === "horizontal") {
+      const moveThreshold = this.slideWidth / 4;
+
+      if (this.currentTranslate - this.prevTranslate < -moveThreshold) {
+        this.nextSlide();
+      } else if (this.currentTranslate - this.prevTranslate > moveThreshold) {
+        this.prevSlide();
+      } else {
+        this.snapToSlide();
+      }
+    }
+
+    this.swipeDirection = null;
   }
 
   addButtonListeners() {
-    this.nextButton.addEventListener("click", () => {
-      this.nextSlide();
-    });
-
-    this.prevButton.addEventListener("click", () => {
-      this.prevSlide();
-    });
+    if (this.nextButton) {
+      this.nextButton.addEventListener("click", () => this.nextSlide());
+    }
+    if (this.prevButton) {
+      this.prevButton.addEventListener("click", () => this.prevSlide());
+    }
   }
 }
 
