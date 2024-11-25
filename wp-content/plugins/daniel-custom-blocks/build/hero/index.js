@@ -53,64 +53,54 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _wordpress_icons__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @wordpress/icons */ "./node_modules/@wordpress/icons/build-module/library/close.js");
 /* harmony import */ var _editor_scss__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./editor.scss */ "./src/hero/editor.scss");
 
-/**
- * Retrieves the translation of text.
- *
- * @see https://developer.wordpress.org/block-editor/reference-guides/packages/packages-i18n/
- */
-
-
-/**
- * React hook that is used to mark the block wrapper element.
- * It provides all the necessary props like the class name.
- *
- * @see https://developer.wordpress.org/block-editor/reference-guides/packages/packages-block-editor/#useblockprops
- */
 
 
 
 
-/**
- * Lets webpack process CSS, SASS or SCSS files referenced in JavaScript files.
- * Those files can contain any CSS code that gets applied to the editor.
- *
- * @see https://www.npmjs.com/package/@wordpress/scripts#using-css
- */
 
-
-/**
- * The edit function describes the structure of your block in the context of the
- * editor. This represents what the editor will render when the block is used.
- *
- * @see https://developer.wordpress.org/block-editor/reference-guides/block-api/block-edit-save/#edit
- *
- * @return {Element} Element to render.
- */
 function Edit({
   attributes,
   setAttributes
 }) {
   const {
-    images
+    images,
+    captionPosition,
+    textAlign
   } = attributes;
+  const blockProps = (0,_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__.useBlockProps)();
   const onSelectImages = newImages => {
+    const updatedImages = [...images];
+    newImages.forEach(newImage => {
+      if (!images.some(img => img.url === newImage.url)) {
+        updatedImages.push({
+          url: newImage.url,
+          alt: newImage.alt,
+          caption: ""
+        });
+      }
+    });
+    setAttributes({
+      images: updatedImages
+    });
+  };
+  const onReplaceImages = newImages => {
     setAttributes({
       images: newImages.map(image => ({
         url: image.url,
         alt: image.alt,
-        caption: image.caption
+        caption: ""
       }))
     });
   };
   const onRemoveImage = index => {
-    const newImages = [...images];
-    newImages.splice(index, 1);
+    const updatedImages = [...images];
+    updatedImages.splice(index, 1);
     setAttributes({
-      images: newImages
+      images: updatedImages
     });
   };
   const onUpdateCaption = (index, newCaption) => {
-    const newImages = images.map((img, idx) => {
+    const updatedImages = images.map((img, idx) => {
       if (idx === index) {
         return {
           ...img,
@@ -120,16 +110,79 @@ function Edit({
       return img;
     });
     setAttributes({
-      images: newImages
+      images: updatedImages
     });
   };
-  const {
-    className
-  } = (0,_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__.useBlockProps)();
-  return (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
-    ...(0,_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__.useBlockProps)(),
-    className: `${className} hero`
+  return (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(react__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__.InspectorControls, null, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__.PanelBody, {
+    title: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)("Caption Position", "hero")
+  }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__.SelectControl, {
+    label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)("Vertical Position", "hero"),
+    value: captionPosition.vertical,
+    options: [{
+      label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)("Top", "hero"),
+      value: "v-top"
+    }, {
+      label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)("Middle", "hero"),
+      value: "v-middle"
+    }, {
+      label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)("Bottom", "hero"),
+      value: "v-bottom"
+    }],
+    onChange: value => setAttributes({
+      captionPosition: {
+        ...captionPosition,
+        vertical: value
+      }
+    })
+  }), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__.SelectControl, {
+    label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)("Horizontal Position", "hero"),
+    value: captionPosition.horizontal,
+    options: [{
+      label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)("Left", "hero"),
+      value: "h-start"
+    }, {
+      label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)("Center", "hero"),
+      value: "h-center"
+    }, {
+      label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)("Right", "hero"),
+      value: "h-right"
+    }],
+    onChange: value => setAttributes({
+      captionPosition: {
+        ...captionPosition,
+        horizontal: value
+      }
+    })
+  })), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__.PanelBody, {
+    title: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)("Text Alignment", "hero")
+  }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__.SelectControl, {
+    label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)("Text Alignment", "hero"),
+    value: textAlign,
+    options: [{
+      label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)("Left", "hero"),
+      value: "text-left"
+    }, {
+      label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)("Center", "hero"),
+      value: "text-center"
+    }, {
+      label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)("Right", "hero"),
+      value: "text-right"
+    }],
+    onChange: value => setAttributes({
+      textAlign: value
+    })
+  }))), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+    ...blockProps
   }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__.MediaUploadCheck, null, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__.MediaUpload, {
+    onSelect: onReplaceImages,
+    multiple: true,
+    allowedTypes: ["image"],
+    render: ({
+      open
+    }) => (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("button", {
+      onClick: open
+    }, (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)("Replace Images", "hero"))
+  })), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__.MediaUploadCheck, null, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__.MediaUpload, {
     onSelect: onSelectImages,
     multiple: true,
     allowedTypes: ["image"],
@@ -137,57 +190,25 @@ function Edit({
       open
     }) => (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("button", {
       onClick: open
-    }, "Select images")
-  })), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("section", {
-    className: "hero"
-  }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
-    className: "hero-images"
-  }, images.length && images.map((image, index) => {
-    return (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
-      key: index,
-      className: `hero-image-wrapper ${index === 0 ? "active" : ""}`
-    }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__.Button, {
-      onClick: () => onRemoveImage(index),
-      icon: _wordpress_icons__WEBPACK_IMPORTED_MODULE_5__["default"] // Use the imported icon here
-      ,
-      label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)("Delete image", "text-domain"),
-      className: "remove-image-button",
-      isDestructive: true
-    }), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("img", {
-      src: image.url,
-      alt: image.alt,
-      "data-caption": image.caption
-    }), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("input", {
-      className: "caption-input",
-      type: "text",
-      value: image.caption,
-      onChange: e => onUpdateCaption(index, e.target.value),
-      placeholder: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)("Add caption", "hero")
-    }));
+    }, (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)("Add Images", "hero"))
   })), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
-    className: `controls ${images.length < 2 ? 'disabled' : ''}`
-  }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("button", null, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("span", null, "Previous"), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("svg", {
-    xmlns: "http://www.w3.org/2000/svg",
-    fill: "none",
-    viewBox: "0 0 24 24",
-    "stroke-width": "1.5",
-    stroke: "#FFF",
-    class: "w-6 h-6"
-  }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("path", {
-    "stroke-linecap": "round",
-    "stroke-linejoin": "round",
-    d: "M15.75 19.5 8.25 12l7.5-7.5"
-  }))), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("button", null, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("span", null, "Next"), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("svg", {
-    xmlns: "http://www.w3.org/2000/svg",
-    fill: "none",
-    viewBox: "0 0 24 24",
-    "stroke-width": "1.5",
-    stroke: "#FFF",
-    class: "w-6 h-6"
-  }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("path", {
-    "stroke-linecap": "round",
-    "stroke-linejoin": "round",
-    d: "m8.25 4.5 7.5 7.5-7.5 7.5"
+    className: "hero-images"
+  }, images.map((image, index) => (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+    className: "hero-image-wrapper",
+    key: index
+  }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__.Button, {
+    icon: _wordpress_icons__WEBPACK_IMPORTED_MODULE_5__["default"],
+    onClick: () => onRemoveImage(index),
+    className: "remove-image-button"
+  }), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("img", {
+    src: image.url,
+    alt: image.alt
+  }), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("input", {
+    type: "text",
+    value: image.caption,
+    onChange: e => onUpdateCaption(index, e.target.value),
+    placeholder: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)("Add caption", "hero"),
+    className: `caption-input ${captionPosition.vertical} ${captionPosition.horizontal} ${textAlign}`
   }))))));
 }
 
@@ -262,30 +283,17 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @wordpress/block-editor */ "@wordpress/block-editor");
 /* harmony import */ var _wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__);
 
-/**
- * React hook that is used to mark the block wrapper element.
- * It provides all the necessary props like the class name.
- *
- * @see https://developer.wordpress.org/block-editor/reference-guides/packages/packages-block-editor/#useblockprops
- */
 
-
-/**
- * The save function defines the way in which the different attributes should
- * be combined into the final markup, which is then serialized by the block
- * editor into `post_content`.
- *
- * @see https://developer.wordpress.org/block-editor/reference-guides/block-api/block-edit-save/#save
- *
- * @return {Element} Element to render.
- */
 function save({
   attributes
 }) {
   const {
-    images
+    images,
+    captionPosition,
+    textAlign
   } = attributes;
   return (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("section", {
+    ..._wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__.useBlockProps.save(),
     className: "hero"
   }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
     className: "hero-images"
@@ -296,31 +304,35 @@ function save({
     src: image.url,
     alt: image.alt,
     "data-caption": image.caption
-  }), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("span", {
-    className: "hero-image-caption"
-  }, image.caption)))), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
-    className: `controls ${images.length < 2 ? 'disabled' : ''}`
-  }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("button", null, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("span", null, "Previous"), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("svg", {
+  }), image.caption && (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("span", {
+    className: `hero-image-caption ${captionPosition.vertical} ${captionPosition.horizontal} ${textAlign}`
+  }, image.caption)))), images.length > 1 && (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+    className: "controls"
+  }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("button", {
+    className: "prev-slide"
+  }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("span", null, "Previous"), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("svg", {
     xmlns: "http://www.w3.org/2000/svg",
     fill: "none",
     viewBox: "0 0 24 24",
-    "stroke-width": "1.5",
+    strokeWidth: "1.5",
     stroke: "#FFF",
-    class: "w-6 h-6"
+    className: "w-6 h-6"
   }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("path", {
-    "stroke-linecap": "round",
-    "stroke-linejoin": "round",
+    strokeLinecap: "round",
+    strokeLinejoin: "round",
     d: "M15.75 19.5 8.25 12l7.5-7.5"
-  }))), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("button", null, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("span", null, "Next"), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("svg", {
+  }))), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("button", {
+    className: "next-slide"
+  }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("span", null, "Next"), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("svg", {
     xmlns: "http://www.w3.org/2000/svg",
     fill: "none",
     viewBox: "0 0 24 24",
-    "stroke-width": "1.5",
+    strokeWidth: "1.5",
     stroke: "#FFF",
-    class: "w-6 h-6"
+    className: "w-6 h-6"
   }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("path", {
-    "stroke-linecap": "round",
-    "stroke-linejoin": "round",
+    strokeLinecap: "round",
+    strokeLinejoin: "round",
     d: "m8.25 4.5 7.5 7.5-7.5 7.5"
   })))));
 }
@@ -417,7 +429,7 @@ module.exports = window["wp"]["primitives"];
   \*****************************/
 /***/ ((module) => {
 
-module.exports = /*#__PURE__*/JSON.parse('{"$schema":"https://schemas.wp.org/trunk/block.json","apiVersion":3,"name":"daniel/hero","version":"0.1.0","title":"Hero","category":"widgets","icon":"dashicons-format-gallery","description":"Custom hero block","attributes":{"images":{"type":"array","source":"query","default":[],"selector":"img","query":{"url":{"type":"string","source":"attribute","attribute":"src"},"alt":{"type":"string","source":"attribute","attribute":"alt"},"caption":{"type":"string","source":"attribute","attribute":"data-caption"}}}},"supports":{"html":false},"textdomain":"hero","editorScript":"file:./index.js","editorStyle":"file:./index.css","style":"file:./style-index.css","viewScript":"file:./view.js","viewStyle":"file:./view.css"}');
+module.exports = /*#__PURE__*/JSON.parse('{"$schema":"https://schemas.wp.org/trunk/block.json","apiVersion":3,"name":"daniel/hero","version":"0.1.2","title":"Hero","category":"widgets","icon":"format-gallery","description":"Custom hero block with enhanced caption controls","attributes":{"images":{"type":"array","default":[]},"captionPosition":{"type":"object","default":{"vertical":"bottom","horizontal":"left"}},"textAlign":{"type":"string","default":"left"}},"supports":{"html":false},"textdomain":"hero","editorScript":"file:./index.js","editorStyle":"file:./index.css","style":"file:./style-index.css","viewScript":"file:./view.js","viewStyle":"file:./view.css"}');
 
 /***/ })
 

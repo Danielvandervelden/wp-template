@@ -2,34 +2,23 @@
   "$schema": "https://schemas.wp.org/trunk/block.json",
   "apiVersion": 3,
   "name": "daniel/hero",
-  "version": "0.1.0",
+  "version": "0.1.2",
   "title": "Hero",
   "category": "widgets",
-  "icon": "dashicons-format-gallery",
-  "description": "Custom hero block",
+  "icon": "format-gallery",
+  "description": "Custom hero block with enhanced caption controls",
   "attributes": {
     "images": {
       "type": "array",
-      "source": "query",
-      "default": [],
-      "selector": "img",
-      "query": {
-        "url": {
-          "type": "string",
-          "source": "attribute",
-          "attribute": "src"
-        },
-        "alt": {
-          "type": "string",
-          "source": "attribute",
-          "attribute": "alt"
-        },
-        "caption": {
-          "type": "string",
-          "source": "attribute",
-          "attribute": "data-caption"
-        }
-      }
+      "default": []
+    },
+    "captionPosition": {
+      "type": "object",
+      "default": { "vertical": "bottom", "horizontal": "left" }
+    },
+    "textAlign": {
+      "type": "string",
+      "default": "left"
     }
   },
   "supports": {

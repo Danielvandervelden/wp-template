@@ -1,205 +1,233 @@
-/**
- * The following styles get applied both on the front of your site
- * and in the editor.
- *
- * Replace them with your own styles or remove the file completely.
- */
+section.hero {
+  position: relative;
+  width: 100vw;
+  left: 50%;
+  transform: translateX(-50%);
 
-section {
-  &.hero {
-    width: 100vw;
+  .hero-images {
     position: relative;
-    left: 50%;
-    transform: translateX(-50%);
-    overflow: hidden;
-    height: 100dvh;
+    min-height: 100vh;
+  }
 
-    &:has(.controls.disabled) {
-      .hero-image-caption {
-        bottom: 10%;
-      }
-    }
-
-    @media screen and (max-width: 1024px) {
-      height: 50dvh;
-    }
-
-    &:after {
-      content: "";
-      pointer-events: none;
-      display: block;
+  .hero-image {
+    &-wrapper {
+      position: absolute;
+      top: 0;
+      left: 0;
       width: 100%;
-      height: 85%;
-      position: absolute;
-      top: 0;
-      left: 0;
-      background: linear-gradient(
-        180deg,
-        rgba(0, 0, 0, 0.8) 0%,
-        rgba(0, 0, 0, 0) 100%
-      );
-    }
-
-    .hero-image-wrapper {
       height: 100%;
-      position: absolute;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      top: 0;
-      left: 0;
-      min-width: 100%;
-      min-height: 100%;
-      max-width: none;
-
-      &:not(.active) {
-        display: none;
-      }
+      opacity: 0;
 
       &.active {
-        display: block;
+        opacity: 1;
+      }
 
-        .hero-image-caption {
-          animation: transitionIn 0.2s forwards;
-          animation-delay: 0.3s;
+      &.slide-in-from-right {
+        animation: slideInFromRight 0.3s forwards;
+      }
+
+      &.slide-out-to-left {
+        animation: slideOutToLeft 0.3s forwards;
+      }
+
+      &.slide-in-from-left {
+        animation: slideInFromLeft 0.3s forwards;
+      }
+
+      &.slide-out-to-right {
+        animation: slideOutToRight 0.3s forwards;
+      }
+
+      img {
+        min-height: 100%;
+        min-width: 100%;
+        object-fit: cover;
+      }
+    }
+
+    &-caption {
+      position: absolute;
+      color: #fff;
+      font-size: 5rem;
+
+      &.v-top {
+        &.h-left {
+          top: 0;
+          left: 0;
+        }
+
+        &.h-center {
+          top: 0;
+          left: 50%;
+          transform: translateX(-50%);
+        }
+
+        &.h-right {
+          top: 0;
+          right: 0;
         }
       }
 
-      &.transition-out {
-        animation: slideOut 0.3s forwards;
+      &.v-middle {
+        &.h-left {
+          top: 50%;
+          left: 0;
+          transform: translateY(-50%);
+        }
+
+        &.h-center {
+          top: 50%;
+          left: 50%;
+          transform: translate(-50%, -50%);
+        }
+
+        &.h-right {
+          top: 50%;
+          right: 0;
+          transform: translateY(-50%);
+        }
       }
 
-      &.transition-in {
-        animation: slideIn 0.3s forwards;
-      }
-    }
+      &v-bottom {
+        &.h-left {
+          bottom: 0;
+          left: 0;
+        }
 
-    .hero-image-caption {
-      opacity: 0;
-      position: absolute;
-      z-index: 2;
-      left: 1rem;
-      font-size: 7rem;
-      font-family: var(--heading-font-family);
-      color: #fff;
-      bottom: 15%;
+        &.h-center {
+          bottom: 0;
+          left: 50%;
+          transform: translateX(-50%);
+        }
 
-      @media screen and (max-width: 1024px) {
-        bottom: 20%;
-        font-size: 4rem;
-      }
-
-      @media screen and (max-width: 768px) {
-        font-size: 2.5rem;
-      }
-    }
-
-    img {
-      height: 100%;
-      min-width: 100%;
-      object-fit: cover;
-      max-height: none;
-      max-width: none;
-    }
-
-    .hero-content {
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      height: 100%;
-      padding: 0 20px;
-      text-align: center;
-
-      h1 {
-        font-size: 2.5rem;
-        margin-bottom: 20px;
-      }
-
-      p {
-        font-size: 1.5rem;
-        margin-bottom: 20px;
-      }
-
-      .hero-button {
-        background-color: #fff;
-        color: #21759b;
-        padding: 10px 20px;
-        border-radius: 5px;
-        text-decoration: none;
+        &.h-right {
+          bottom: 0;
+          right: 0;
+        }
       }
     }
   }
 
   .controls {
     position: absolute;
-    bottom: 1rem;
-    left: 1rem;
     display: flex;
-    gap: 1rem;
-
-    &.disabled {
-      display: none;
-    }
-
-    span {
-      position: absolute;
-      opacity: 0;
-      pointer-events: none;
-    }
+    align-items: center;
+    justify-content: space-between;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 95vw;
+    bottom: 0;
+    z-index: 10;
+    pointer-events: none;
 
     button {
-      display: flex;
-      align-items: center;
-      justify-content: center;
+      pointer-events: all;
       background-color: transparent;
-      border: 2px solid #fff;
-      color: #fff;
+      border: none;
       cursor: pointer;
-      backdrop-filter: blur(5px);
-      width: 100px;
-      height: 100px;
-
-      @media screen and (max-width: 1024px) {
-        width: 50px;
-        height: 50px;
-      }
+      border-radius: 4px;
+      border: 1px solid transparent;
+      padding: 0;
 
       &:hover {
-        background-color: rgba(0, 0, 0, 0.3);
+        border: 1px solid #fff;
       }
+
+      span {
+        position: absolute;
+        width: 1px;
+        height: 1px;
+        padding: 0;
+        margin: -1px;
+        overflow: hidden;
+        clip: rect(0, 0, 0, 0);
+        white-space: nowrap;
+        border: 0;
+      }
+
+      svg {
+        color: #fff;
+        width: 50px;
+        height: 50px;
+        display: flex;
+      }
+    }
+  }
+
+  @media screen and (max-width: 768px) {
+    .hero-images {
+      min-height: 50vh;
+    }
+
+    .hero-image-caption {
+      font-size: 3rem;
     }
   }
 }
 
-@keyframes slideOut {
-  from {
-    transform: translateX(0);
-  }
-
-  to {
-    transform: translateX(-100%);
-  }
-}
-
-@keyframes slideIn {
-  from {
+@keyframes slideInFromRight {
+  0% {
     transform: translateX(100%);
+    opacity: 0;
   }
 
-  to {
+  1% {
+    transform: translateX(100%);
+    opacity: 1;
+  }
+
+  100% {
     transform: translateX(0);
   }
 }
 
-@keyframes transitionIn {
-  from {
-    opacity: 0;
-    transform: translateY(-20px);
+@keyframes slideOutToLeft {
+  0% {
+    transform: translateX(0);
+    opacity: 1;
   }
 
-  to {
+  99% {
+    transform: translateX(-100%);
     opacity: 1;
-    transform: translateY(0);
+  }
+
+  100% {
+    transform: translateX(-100%);
+    opacity: 0;
+  }
+}
+
+@keyframes slideInFromLeft {
+  0% {
+    transform: translateX(-100%);
+    opacity: 0;
+  }
+
+  1% {
+    transform: translateX(-100%);
+    opacity: 1;
+  }
+
+  100% {
+    transform: translateX(0);
+  }
+}
+
+@keyframes slideOutToRight {
+  0% {
+    transform: translateX(0);
+    opacity: 1;
+  }
+
+  99% {
+    transform: translateX(100%);
+    opacity: 1;
+  }
+
+  100% {
+    transform: translateX(100%);
+    opacity: 0;
   }
 }
