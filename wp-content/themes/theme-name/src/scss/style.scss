@@ -1,8 +1,8 @@
 @use "./variables";
 @import "./typography";
 @import "./normalize";
-@import './layout';
-@import './buttons';
+@import "./layout";
+@import "./buttons";
 @import "./parts/header";
 @import "./parts/footer";
 
@@ -25,18 +25,18 @@
     --font-size-h6: 1rem;
 
     /* Colors */
-    --color-primary: #F4F1DE; /* Warm beige */
-    --color-secondary: #E07A5F; /* Muted terracotta */
-    --color-tertiary: #F2CC8F; /* Soft golden sand */
-    --color-quarternary: #81B29A; /* Calm sage green */
-    --color-dark: #3D405B; /* Soft charcoal */
-    --color-success: #A3B18A; /* Earthy olive green */
-    --color-info: #CB997E; /* Muted caramel */
-    --color-warning: #F4A261; /* Warm orange ochre */
-    --color-danger: #D62828; /* Earthy red */
-    --default: #FFFFFF; /* Clean white */
+    --color-primary: #f4f1de; /* Warm beige */
+    --color-secondary: #e07a5f; /* Muted terracotta */
+    --color-tertiary: #f2cc8f; /* Soft golden sand */
+    --color-quarternary: #81b29a; /* Calm sage green */
+    --color-dark: #3d405b; /* Soft charcoal */
+    --color-success: #a3b18a; /* Earthy olive green */
+    --color-info: #cb997e; /* Muted caramel */
+    --color-warning: #f4a261; /* Warm orange ochre */
+    --color-danger: #d62828; /* Earthy red */
+    --default: #ffffff; /* Clean white */
     --color-link: var(--color-secondary);
-    --color-background: #FEFAF6; /* Soft off-white */
+    --color-background: #fefaf6; /* Soft off-white */
     --color-text: var(--color-dark);
 
     /* Spacing */
@@ -54,6 +54,12 @@
         --font-size-h5: 1.5rem;
         --font-size-h6: 1.25rem;
     }
+}
+
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
 }
 
 body {

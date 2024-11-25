@@ -163,6 +163,13 @@ section.hero {
     .hero-image-caption {
       font-size: 3rem;
     }
+
+    .controls {
+      button svg {
+        width: 30px;
+        height: 30px;
+      }
+    }
   }
 }
 
