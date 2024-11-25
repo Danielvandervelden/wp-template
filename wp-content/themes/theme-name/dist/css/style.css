@@ -5,6 +5,7 @@
 body {
   font-size: 1rem;
   font-size: var(--font-size-base);
+  color: #3D405B;
   color: var(--color-text);
   font-family: "Roboto", sans-serif, Helvetica, Arial, sans-serif;
   font-family: var(--font-family), Helvetica, Arial, sans-serif;
@@ -54,7 +55,7 @@ p {
 }
 
 a {
-  color: #EFECCA;
+  color: #E07A5F;
   color: var(--color-link);
   -webkit-text-decoration: none;
   text-decoration: none;
@@ -428,27 +429,27 @@ main div:last-of-type.wp-block-daniel-full-width-image {
 }
 
 a.wp-block-button__link.has-beige-background-color.has-background {
-  background-color: #EFECCA;
+  background-color: #F4F1DE;
   background-color: var(--color-primary);
 }
 
 a.wp-block-button__link.has-green-background-color.has-background {
-  background-color: #A9CBB7;
+  background-color: #E07A5F;
   background-color: var(--color-secondary);
 }
 
 a.wp-block-button__link.has-orange-background-color.has-background {
-  background-color: #D1B1C8;
+  background-color: #F2CC8F;
   background-color: var(--color-tertiary);
 }
 
 a.wp-block-button__link.has-red-background-color.has-background {
-  background-color: #FB4D3D;
+  background-color: #81B29A;
   background-color: var(--color-quarternary);
 }
 
 a.wp-block-button__link.has-dark-gray-background-color.has-background {
-  background-color: #17a2b8;
+  background-color: #CB997E;
   background-color: var(--color-info);
 }
 
@@ -489,7 +490,7 @@ a.wp-block-button__link.has-dark-gray-background-color.has-background {
   list-style: none;
 }
 .menu-container ul#menu-main-menu li.current-menu-item a {
-  color: #A9CBB7;
+  color: #E07A5F;
   color: var(--color-secondary);
 }
 
@@ -511,7 +512,7 @@ a.wp-block-button__link.has-dark-gray-background-color.has-background {
   }
   #mobile-menu-open:active,
   #mobile-menu-close:active {
-    color: #EFECCA;
+    color: #F4F1DE;
     color: var(--color-primary);
   }
   #mobile-menu-open {
@@ -536,7 +537,7 @@ a.wp-block-button__link.has-dark-gray-background-color.has-background {
     left: 0;
     top: 0;
     height: 100vh;
-    background-color: #5E565A;
+    background-color: #3D405B;
     background-color: var(--color-dark);
     width: 80vw;
     box-shadow: 0 0 1rem rgba(0, 0, 0, 0.1);
@@ -552,7 +553,7 @@ a.wp-block-button__link.has-dark-gray-background-color.has-background {
     text-decoration: none;
   }
   #navigation .header-menu li.current-menu-item a {
-    color: #A9CBB7;
+    color: #E07A5F;
     color: var(--color-secondary);
   }
   #navigation .header-menu li + li {
@@ -561,7 +562,7 @@ a.wp-block-button__link.has-dark-gray-background-color.has-background {
   .mobile-menu-logo-wrapper {
     display: flex;
     justify-content: center;
-    border-bottom: 1px solid #EFECCA;
+    border-bottom: 1px solid #F4F1DE;
     border-bottom: 1px solid var(--color-primary);
     padding: 1rem 0;
   }
@@ -591,13 +592,13 @@ a.wp-block-button__link.has-dark-gray-background-color.has-background {
     padding: 1rem;
   }
   #menu-main-menu > li:hover > a {
-    color: #FFF;
+    color: #FFFFFF;
     color: var(--default);
     color: #fff;
   }
   #menu-main-menu > li:hover:after {
     transform: rotate(180deg);
-    color: #FFF;
+    color: #FFFFFF;
     color: var(--default);
   }
   #menu-main-menu .menu-item-has-children {
@@ -651,9 +652,9 @@ a.wp-block-button__link.has-dark-gray-background-color.has-background {
   #menu-main-menu > .menu-item-has-children > ul li {
     white-space: nowrap;
     padding: 1rem;
-    border-left: 1px solid #EFECCA;
+    border-left: 1px solid #F4F1DE;
     border-left: 1px solid var(--color-primary);
-    border-right: 1px solid #EFECCA;
+    border-right: 1px solid #F4F1DE;
     border-right: 1px solid var(--color-primary);
     /** Level 2 menus and beyond */
   }
@@ -661,7 +662,7 @@ a.wp-block-button__link.has-dark-gray-background-color.has-background {
     transform: rotate(95deg);
   }
   #menu-main-menu > .menu-item-has-children > ul li:after {
-    color: #FFF;
+    color: #FFFFFF;
     color: var(--default);
   }
   #menu-main-menu > .menu-item-has-children > ul li ul {
@@ -674,7 +675,7 @@ a.wp-block-button__link.has-dark-gray-background-color.has-background {
     margin: 0;
   }
   #menu-main-menu > .menu-item-has-children > ul li ul li a {
-    color: #5E565A;
+    color: #3D405B;
     color: var(--color-dark);
   }
   #menu-main-menu > .menu-item-has-children > ul li ul li:first-of-type {
@@ -688,7 +689,7 @@ a.wp-block-button__link.has-dark-gray-background-color.has-background {
     background-color: #FFF;
   }
   #menu-main-menu > .menu-item-has-children > ul > li > a {
-    color: #5E565A;
+    color: #3D405B;
     color: var(--color-dark);
   }
   #menu-main-menu > .menu-item-has-children > ul > li:hover:last-of-type.menu-item-has-children {
@@ -697,12 +698,12 @@ a.wp-block-button__link.has-dark-gray-background-color.has-background {
 }
 /* Break points */
 .page-footer {
-  background-color: #A9CBB7;
+  background-color: #E07A5F;
   background-color: var(--color-secondary);
   padding: 4rem 0.5rem;
   display: flex;
   justify-content: center;
-  color: #5E565A;
+  color: #3D405B;
   color: var(--color-dark);
 }
 @media screen and (max-width: 1024px) {
@@ -743,7 +744,7 @@ a.wp-block-button__link.has-dark-gray-background-color.has-background {
 .page-footer .contact a {
   -webkit-text-decoration: underline;
   text-decoration: underline;
-  color: #5E565A;
+  color: #3D405B;
   color: var(--color-dark);
 }
 .page-footer .social-links {
@@ -760,7 +761,7 @@ a.wp-block-button__link.has-dark-gray-background-color.has-background {
   list-style: none;
 }
 .page-footer .footer-menu ul a {
-  color: #5E565A;
+  color: #3D405B;
   color: var(--color-dark);
   -webkit-text-decoration: underline;
   text-decoration: underline;
@@ -786,18 +787,19 @@ a.wp-block-button__link.has-dark-gray-background-color.has-background {
   --font-size-h5: 1.25rem;
   --font-size-h6: 1rem;
   /* Colors */
-  --color-primary: #EFECCA;
-  --color-secondary: #A9CBB7;
-  --color-tertiary: #D1B1C8;
-  --color-quarternary: #FB4D3D;
-  --color-dark: #5E565A;
-  --color-success: #28a745;
-  --color-info: #17a2b8;
-  --color-warning: #ffc107;
-  --color-danger: #dc3545;
-  --default: #FFF;
-  --color-link: var(--color-primary);
-  --color-background: #333;
+  --color-primary: #F4F1DE; /* Warm beige */
+  --color-secondary: #E07A5F; /* Muted terracotta */
+  --color-tertiary: #F2CC8F; /* Soft golden sand */
+  --color-quarternary: #81B29A; /* Calm sage green */
+  --color-dark: #3D405B; /* Soft charcoal */
+  --color-success: #A3B18A; /* Earthy olive green */
+  --color-info: #CB997E; /* Muted caramel */
+  --color-warning: #F4A261; /* Warm orange ochre */
+  --color-danger: #D62828; /* Earthy red */
+  --default: #FFFFFF; /* Clean white */
+  --color-link: var(--color-secondary);
+  --color-background: #FEFAF6; /* Soft off-white */
+  --color-text: var(--color-dark);
   /* Spacing */
   --padding-sides: 1rem;
 }
@@ -817,10 +819,10 @@ a.wp-block-button__link.has-dark-gray-background-color.has-background {
 body {
   margin: 0;
   padding: 0;
-  background-color: #333;
+  background-color: #FEFAF6;
   background-color: var(--color-background);
-  color: #FFF;
-  color: var(--default);
+  color: #3D405B;
+  color: var(--color-text);
 }
 
 #backdrop {

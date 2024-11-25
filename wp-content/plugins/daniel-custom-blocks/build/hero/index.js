@@ -417,7 +417,7 @@ module.exports = window["wp"]["primitives"];
   \*****************************/
 /***/ ((module) => {
 
-module.exports = /*#__PURE__*/JSON.parse('{"$schema":"https://schemas.wp.org/trunk/block.json","apiVersion":3,"name":"daniel/hero","version":"0.1.0","title":"Hero","category":"widgets","icon":"smiley","description":"Custom hero block","attributes":{"images":{"type":"array","source":"query","default":[],"selector":"img","query":{"url":{"type":"string","source":"attribute","attribute":"src"},"alt":{"type":"string","source":"attribute","attribute":"alt"},"caption":{"type":"string","source":"attribute","attribute":"data-caption"}}}},"supports":{"html":false},"textdomain":"hero","editorScript":"file:./index.js","editorStyle":"file:./index.css","style":"file:./style-index.css","viewScript":"file:./view.js","viewStyle":"file:./view.css"}');
+module.exports = /*#__PURE__*/JSON.parse('{"$schema":"https://schemas.wp.org/trunk/block.json","apiVersion":3,"name":"daniel/hero","version":"0.1.0","title":"Hero","category":"widgets","icon":"dashicons-format-gallery","description":"Custom hero block","attributes":{"images":{"type":"array","source":"query","default":[],"selector":"img","query":{"url":{"type":"string","source":"attribute","attribute":"src"},"alt":{"type":"string","source":"attribute","attribute":"alt"},"caption":{"type":"string","source":"attribute","attribute":"data-caption"}}}},"supports":{"html":false},"textdomain":"hero","editorScript":"file:./index.js","editorStyle":"file:./index.css","style":"file:./style-index.css","viewScript":"file:./view.js","viewStyle":"file:./view.css"}');
 
 /***/ })
 

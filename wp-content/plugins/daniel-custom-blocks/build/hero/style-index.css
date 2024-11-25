@@ -67,7 +67,7 @@ section.hero .hero-image-caption {
   position: absolute;
   z-index: 2;
   left: 1rem;
-  font-size: 8vw;
+  font-size: 7rem;
   font-family: var(--heading-font-family);
   color: #fff;
   bottom: 15%;
@@ -75,6 +75,12 @@ section.hero .hero-image-caption {
 @media screen and (max-width: 1024px) {
   section.hero .hero-image-caption {
     bottom: 20%;
+    font-size: 4rem;
+  }
+}
+@media screen and (max-width: 768px) {
+  section.hero .hero-image-caption {
+    font-size: 2.5rem;
   }
 }
 section.hero img {

@@ -25,18 +25,19 @@
     --font-size-h6: 1rem;
 
     /* Colors */
-    --color-primary: #EFECCA; 
-    --color-secondary: #A9CBB7;
-    --color-tertiary: #D1B1C8;
-    --color-quarternary: #FB4D3D;
-    --color-dark: #5E565A;
-    --color-success: #28a745;
-    --color-info: #17a2b8;
-    --color-warning: #ffc107;
-    --color-danger: #dc3545;
-    --default: #FFF;
-    --color-link: var(--color-primary);
-    --color-background: #333;
+    --color-primary: #F4F1DE; /* Warm beige */
+    --color-secondary: #E07A5F; /* Muted terracotta */
+    --color-tertiary: #F2CC8F; /* Soft golden sand */
+    --color-quarternary: #81B29A; /* Calm sage green */
+    --color-dark: #3D405B; /* Soft charcoal */
+    --color-success: #A3B18A; /* Earthy olive green */
+    --color-info: #CB997E; /* Muted caramel */
+    --color-warning: #F4A261; /* Warm orange ochre */
+    --color-danger: #D62828; /* Earthy red */
+    --default: #FFFFFF; /* Clean white */
+    --color-link: var(--color-secondary);
+    --color-background: #FEFAF6; /* Soft off-white */
+    --color-text: var(--color-dark);
 
     /* Spacing */
     --padding-sides: 1rem;
@@ -59,7 +60,7 @@ body {
     margin: 0;
     padding: 0;
     background-color: var(--color-background);
-    color: var(--default);
+    color: var(--color-text);
 }
 
 #backdrop {
