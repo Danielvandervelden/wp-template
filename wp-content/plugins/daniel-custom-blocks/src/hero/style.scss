@@ -1,6 +1,9 @@
+$innerOffset: 16px;
+
 .hero {
   overflow: hidden;
   position: relative;
+  transition: none;
   left: 50%;
   transform: translateX(-50%);
   width: 100vw;
@@ -13,15 +16,79 @@
     height: 100%;
   }
 
-  .hero-image-wrapper {
-    flex: 0 0 100%; /* Each slide takes full width */
-    max-width: 100%;
-    position: relative;
+  .hero-image {
+    &-wrapper {
+      flex: 0 0 100%; /* Each slide takes full width */
+      max-width: 100%;
+      position: relative;
 
-    img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
+      img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+    }
+
+    &-caption {
+      position: absolute;
+      color: #fff;
+      font-size: 5rem;
+
+      &.v-top {
+        &.h-start {
+          top: $innerOffset;
+          left: $innerOffset;
+        }
+
+        &.h-center {
+          top: $innerOffset;
+          left: 50%;
+          transform: translateX(-50%);
+        }
+
+        &.h-end {
+          top: $innerOffset;
+          right: $innerOffset;
+        }
+      }
+
+      &.v-middle {
+        &.h-start {
+          top: 50%;
+          left: $innerOffset;
+          transform: translateY(-50%);
+        }
+
+        &.h-center {
+          top: 50%;
+          left: 50%;
+          transform: translate(-50%, -50%);
+        }
+
+        &.h-end {
+          top: 50%;
+          right: $innerOffset;
+          transform: translateY(-50%);
+        }
+      }
+
+      &.v-bottom {
+        &.h-start {
+          bottom: $innerOffset;
+          left: $innerOffset;
+        }
+
+        &.h-center {
+          bottom: $innerOffset;
+          left: 50%;
+          transform: translateX(-50%);
+        }
+
+        &.h-end {
+          bottom: $innerOffset;
+          right: $innerOffset;
+        }
+      }
     }
   }
 
@@ -76,5 +143,18 @@
 @media screen and (max-width: 768px) {
   .hero {
     height: 50vh;
+
+    .hero-image-caption {
+      font-size: 2rem;
+    }
+
+    .controls {
+      button {
+        svg {
+          width: 30px;
+          height: 30px;
+        }
+      }
+    }
   }
 }

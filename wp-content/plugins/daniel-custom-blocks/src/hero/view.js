@@ -21,6 +21,14 @@ class Hero {
     this.addTouchListener();
     this.addButtonListeners();
     this.updateSliderPosition(false);
+
+    // Add window resize listener
+    window.addEventListener("resize", () => this.handleResize());
+  }
+
+  handleResize() {
+    this.slideWidth = this.hero.offsetWidth;
+    this.updateSliderPosition(false); // Update position without transition
   }
 
   updateSliderPosition(applyTransition = true) {
@@ -32,6 +40,11 @@ class Hero {
     }
     this.currentTranslate = -this.activeIndex * this.slideWidth;
     this.slider.style.transform = `translate3d(${this.currentTranslate}px, 0, 0)`;
+  }
+
+  handleResize() {
+    this.slideWidth = this.hero.offsetWidth;
+    this.updateSliderPosition(false); // Recalculate without transition
   }
 
   nextSlide() {
