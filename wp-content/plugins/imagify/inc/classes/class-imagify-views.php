@@ -3,7 +3,6 @@
 use Imagify\User\User;
 use Imagify\Dependencies\WPMedia\PluginFamily\Model\PluginFamily;
 
-defined( 'ABSPATH' ) || die( 'Cheatin’ uh?' );
 
 /**
  * Class that handles templates and menus.
@@ -76,6 +75,13 @@ class Imagify_Views {
 	 */
 	protected static $_instance;
 
+	/**
+	 * Imagify admin bar menu.
+	 *
+	 * @var bool
+	 */
+	private $admin_menu_is_present = false;
+
 
 	/** ----------------------------------------------------------------------------------------- */
 	/** INSTANCE/INIT =========================================================================== */
@@ -127,6 +133,7 @@ class Imagify_Views {
 		// JS templates in footer.
 		add_action( 'admin_print_footer_scripts', [ $this, 'print_js_templates' ] );
 		add_action( 'admin_footer', [ $this, 'print_modal_payment' ] );
+		add_action( 'wp_before_admin_bar_render', [ $this, 'maybe_print_modal_payment' ] );
 	}
 
 
@@ -196,7 +203,7 @@ class Imagify_Views {
 
 		// Change the sub-menu label.
 		if ( ! empty( $submenu[ $this->get_bulk_page_slug() ] ) ) {
-			$submenu[ $this->get_bulk_page_slug() ][0][0] = __( 'Bulk Optimization', 'imagify' ); // WPCS: override ok.
+			$submenu[ $this->get_bulk_page_slug() ][0][0] = __( 'Bulk Optimization', 'imagify' ); // phpcs:ignore WordPress.WP.GlobalVariablesOverride.Prohibited
 		}
 
 		if ( $screen_id ) {
@@ -249,7 +256,15 @@ class Imagify_Views {
 				$types['library|wp'] = 1;
 			}
 
-			if ( imagify_can_optimize_custom_folders() && ( imagify_is_active_for_network() && is_network_admin() || ! imagify_is_active_for_network() ) ) {
+			if (
+				imagify_can_optimize_custom_folders()
+				&&
+				(
+					( imagify_is_active_for_network() && is_network_admin() )
+					||
+					! imagify_is_active_for_network()
+				)
+			) {
 				/**
 				 * Custom folders: in network admin only if network activated, in each site otherwise.
 				 */
@@ -287,7 +302,6 @@ class Imagify_Views {
 
 		if ( isset( $types['custom-folders|custom-folders'] ) ) {
 			if ( ! Imagify_Folders_DB::get_instance()->has_items() ) {
-				// New Feature!
 				$data['no-custom-folders'] = true;
 			} elseif ( Imagify_Folders_DB::get_instance()->has_active_folders() ) {
 				// Group.
@@ -302,9 +316,15 @@ class Imagify_Views {
 		}
 
 		// Add generic stats.
-		$data = array_merge( $data, imagify_get_bulk_stats( $types, array(
-			'fullset' => true,
-		) ) );
+		$data = array_merge(
+			$data,
+			imagify_get_bulk_stats(
+				$types,
+				[
+					'fullset' => true,
+				]
+			)
+		);
 
 		/**
 		 * Filter the data to use on the bulk optimization page.
@@ -337,9 +357,11 @@ class Imagify_Views {
 	 */
 	public function load_files_list() {
 		// Instantiate the list.
-		$this->list_table = new Imagify_Files_List_Table( array(
-			'screen' => 'imagify-files',
-		) );
+		$this->list_table = new Imagify_Files_List_Table(
+			[
+				'screen' => 'imagify-files',
+			]
+		);
 
 		// Query the Items.
 		$this->list_table->prepare_items();
@@ -537,7 +559,7 @@ class Imagify_Views {
 		$quota = $this->get_quota_percent();
 
 		if ( $quota <= 20 ) {
-			$icon = '<img src="' . IMAGIFY_ASSETS_IMG_URL . 'stormy.svg" width="64" height="63" alt="" />';
+			$icon = '<img src="' . IMAGIFY_ASSETS_IMG_URL . 'stormy.svg" width="40" height="63" alt="" />';
 		} elseif ( $quota <= 50 ) {
 			$icon = '<img src="' . IMAGIFY_ASSETS_IMG_URL . 'cloudy-sun.svg" width="63" height="64" alt="" />';
 		} else {
@@ -561,7 +583,7 @@ class Imagify_Views {
 	 * @param  mixed  $data     Some data to pass to the template.
 	 * @return string|bool      The page contents. False if the template doesn't exist.
 	 */
-	public function get_template( $template, $data = array() ) {
+	public function get_template( $template, $data = array() ) { // phpcs:ignore Generic.CodeAnalysis.UnusedFunctionParameter.FoundAfterLastUsed
 		$path = str_replace( '_', '-', $template );
 		$path = IMAGIFY_PATH . 'views/' . $template . '.php';
 
@@ -635,15 +657,46 @@ class Imagify_Views {
 	}
 
 	/**
+	 * Get imagify user info
+	 *
+	 * @return bool
+	 */
+	private function get_user_info(): bool {
+		$user             = new User();
+		$unconsumed_quota = $user->get_percent_unconsumed_quota();
+
+		return ( ! $user->is_infinite() && $unconsumed_quota <= 20 )
+			|| ( $user->is_free() && $unconsumed_quota > 20 );
+	}
+
+	/**
+	 * Start print the payment modal process.
+	 */
+	public function maybe_print_modal_payment() {
+		if ( $this->get_user_info() ) {
+			global $wp_admin_bar;
+			$this->admin_menu_is_present = $wp_admin_bar && $wp_admin_bar->get_node( 'imagify' );
+
+			return;
+		}
+
+		$this->admin_menu_is_present = false;
+	}
+
+	/**
 	 * Print the payment modal.
+	 *
+	 * @return void
 	 */
 	public function print_modal_payment() {
-		$this->print_template(
-			'modal-payment',
-			[
-				'attachments_number' => $this->get_attachments_number_modal(),
-			]
-		);
+		if ( is_admin_bar_showing() && $this->admin_menu_is_present ) {
+			$this->print_template(
+				'modal-payment',
+				[
+					'attachments_number' => $this->get_attachments_number_modal(),
+				]
+			);
+		}
 	}
 
 	/**

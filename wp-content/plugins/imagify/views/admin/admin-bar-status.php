@@ -1,5 +1,8 @@
 <?php
-defined( 'ABSPATH' ) || die( 'Cheatin’ uh?' );
+defined( 'ABSPATH' ) || exit;
+
+$pos        = strpos( $data['plan_label'], '_' );
+$plan_label = false !== $pos ? substr( $data['plan_label'], 0, $pos ) : $data['plan_label'];
 ?>
 <div class="imagify-admin-bar-quota">
 	<div class="imagify-abq-row">
@@ -8,17 +11,21 @@ defined( 'ABSPATH' ) || die( 'Cheatin’ uh?' );
 		<?php endif; ?>
 		<div class="imagify-account">
 			<p class="imagify-meteo-title"><?php esc_html_e( 'Account status', 'imagify' ); ?></p>
-			<p class="imagify-meteo-subs"><?php esc_html_e( 'Your subscription:', 'imagify' ); ?> &nbsp;<strong class="imagify-user-plan"><?php echo $data['plan_label']; ?></strong></p>
+			<p class="imagify-meteo-subs"><?php esc_html_e( 'Your subscription:', 'imagify' ); ?> &nbsp;<strong class="imagify-user-plan"><?php echo $plan_label; ?></strong></p>
 		</div>
 	</div>
 	<?php if ( $data['plan_with_quota'] ) : ?>
 	<div class="imagify-abq-row">
 		<div class="imagify-space-left">
-			<p><?php
+			<p>
+			<?php
 				printf(
 				// translators: %s = percentage.
-				__( 'You have %s space credit left', 'imagify' ), '<span class="imagify-unconsumed-percent">' . $data['unconsumed_quota'] . '%</span>' );
-				?></p>
+					__( 'You have %s space credit left', 'imagify' ),
+					'<span class="imagify-unconsumed-percent">' . $data['unconsumed_quota'] . '%</span>'
+				);
+			?>
+			</p>
 			<div class="<?php echo esc_attr( $data['quota_class'] ); ?>">
 				<div style="width: <?php echo esc_attr( $data['unconsumed_quota'] ); ?>%;" class="imagify-unconsumed-bar imagify-progress"></div>
 			</div>

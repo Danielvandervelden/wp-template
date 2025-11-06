@@ -86,16 +86,16 @@ class Plugin {
 			return;
 		}
 
-		$this->container->share(
+		$this->container->addShared(
 			'event_manager',
 			function () {
 				return new EventManager();
 			}
 		);
 
-		$this->container->share(
+		$this->container->addShared(
 			'filesystem',
-			function() {
+			function () {
 				return new Imagify_Filesystem();
 			}
 		);
@@ -130,9 +130,6 @@ class Plugin {
 		}
 
 		add_action( 'init', [ $this, 'maybe_activate' ] );
-
-		// Load plugin translations.
-		imagify_load_translations();
 
 		imagify_add_command( new BulkOptimizeCommand() );
 		imagify_add_command( new GenerateMissingNextgenCommand() );

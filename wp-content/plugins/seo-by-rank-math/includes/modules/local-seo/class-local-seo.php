@@ -23,13 +23,14 @@ defined( 'ABSPATH' ) || exit;
  */
 class Local_Seo {
 
-	use Ajax, Hooker;
+	use Ajax;
+	use Hooker;
 
 	/**
 	 * The Constructor.
 	 */
 	public function __construct() {
-		$this->action( 'after_setup_theme', 'location_sitemap' );
+		$this->action( 'after_setup_theme', 'location_sitemap', 11 );
 		$this->filter( 'rank_math/settings/title', 'add_settings' );
 		$this->filter( 'rank_math/json_ld', 'organization_or_person', 9, 2 );
 	}
@@ -55,7 +56,32 @@ class Local_Seo {
 	 * @return array
 	 */
 	public function add_settings( $tabs ) {
-		$tabs['local']['file'] = dirname( __FILE__ ) . '/views/titles-options.php';
+		$about_page = Helper::get_settings( 'titles.local_seo_about_page' );
+		if ( $about_page ) {
+			$about_page = [
+				'id'   => $about_page,
+				'name' => get_the_title( $about_page ),
+				'url'  => get_permalink( $about_page ),
+			];
+		}
+
+		$contact_page = Helper::get_settings( 'titles.local_seo_contact_page' );
+		if ( $contact_page ) {
+			$contact_page = [
+				'id'   => $contact_page,
+				'name' => get_the_title( $contact_page ),
+				'url'  => get_permalink( $contact_page ),
+			];
+		}
+		$tabs['local']['json'] = [
+			'businessTypes'    => Helper::choices_business_types( true ),
+			'phoneTypes'       => Helper::choices_phone_types(),
+			'organizationInfo' => Helper::choices_additional_organization_info(),
+			'aboutPage'        => $about_page,
+			'contactPage'      => $contact_page,
+		];
+
+		$tabs['local']['file'] = __DIR__ . '/views/titles-options.php';
 
 		return $tabs;
 	}
@@ -214,7 +240,7 @@ class Local_Seo {
 			$numbers[] = [
 				'@type'       => 'ContactPoint',
 				'telephone'   => $number['number'],
-				'contactType' => $number['type'],
+				'contactType' => ! empty( $number['type'] ) ? esc_html( $number['type'] ) : 'customer support',
 			];
 		}
 
@@ -277,7 +303,7 @@ class Local_Seo {
 				continue;
 			}
 
-			$opening_hours[ $hour['time'] ][] = $hour['day'];
+			$opening_hours[ $hour['time'] ][] = ! empty( $hour['day'] ) ? esc_html( $hour['day'] ) : 'Monday';
 		}
 
 		return $opening_hours;
@@ -304,7 +330,7 @@ class Local_Seo {
 				continue;
 			}
 
-			$type = $property['type'];
+			$type = ! empty( $property['type'] ) ? esc_html( $property['type'] ) : 'legalName';
 			if ( 'numberOfEmployees' === $type ) {
 				$parts = explode( '-', $property['value'] );
 				if ( empty( $parts[1] ) ) {
