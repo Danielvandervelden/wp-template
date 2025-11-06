@@ -40,11 +40,55 @@ class Hero {
     }
     this.currentTranslate = -this.activeIndex * this.slideWidth;
     this.slider.style.transform = `translate3d(${this.currentTranslate}px, 0, 0)`;
+    this.updateActiveSlide();
+    this.handleVideoPlayback();
   }
 
-  handleResize() {
-    this.slideWidth = this.hero.offsetWidth;
-    this.updateSliderPosition(false); // Recalculate without transition
+  updateActiveSlide() {
+    this.images.forEach((slide, index) => {
+      if (index === this.activeIndex) {
+        slide.classList.add("active");
+      } else {
+        slide.classList.remove("active");
+      }
+    });
+    this.updateNavigationButtons();
+  }
+
+  updateNavigationButtons() {
+    if (this.prevButton) {
+      if (this.activeIndex === 0) {
+        this.prevButton.style.opacity = "0";
+        this.prevButton.style.pointerEvents = "none";
+      } else {
+        this.prevButton.style.opacity = "1";
+        this.prevButton.style.pointerEvents = "all";
+      }
+    }
+
+    if (this.nextButton) {
+      if (this.activeIndex === this.totalSlides - 1) {
+        this.nextButton.style.opacity = "0";
+        this.nextButton.style.pointerEvents = "none";
+      } else {
+        this.nextButton.style.opacity = "1";
+        this.nextButton.style.pointerEvents = "all";
+      }
+    }
+  }
+
+  handleVideoPlayback() {
+    // Pause all videos
+    this.images.forEach((slide, index) => {
+      const video = slide.querySelector("video");
+      if (video) {
+        if (index === this.activeIndex) {
+          video.play();
+        } else {
+          video.pause();
+        }
+      }
+    });
   }
 
   nextSlide() {

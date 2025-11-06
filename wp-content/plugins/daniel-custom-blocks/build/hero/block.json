@@ -12,16 +12,16 @@
       "type": "array",
       "default": []
     },
-    "captionPosition": {
+    "contentPosition": {
       "type": "object",
       "default": {
-        "vertical": "bottom",
-        "horizontal": "left"
+        "vertical": "v-bottom",
+        "horizontal": "h-start"
       }
     },
     "textAlign": {
       "type": "string",
-      "default": "left"
+      "default": "text-left"
     }
   },
   "supports": {
