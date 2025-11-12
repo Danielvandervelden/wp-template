@@ -417,8 +417,7 @@ template {
 
 /* Break points */
 main#primary {
-  padding: 0 1rem;
-  padding: 0 var(--padding-sides);
+  padding: 0;
 }
 
 /**

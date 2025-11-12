@@ -2,6 +2,7 @@
 [data-section] {
   box-sizing: border-box;
   margin: 4rem 0;
+  padding: 0 var(--padding-sides);
 }
 
 @media screen and (max-width: 1024px) {

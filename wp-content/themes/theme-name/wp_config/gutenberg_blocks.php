@@ -10,7 +10,7 @@
  *
  * @return array The array of allowed block types.
  */
-function allowed_block_types($allowed_block_types, $block_editor_context)
+function allowed_block_types($allowed_block_types)
 {
 
   $allowed_block_types = array(
@@ -23,6 +23,91 @@ function allowed_block_types($allowed_block_types, $block_editor_context)
     'core/button',    // Button block
     'core/buttons',   // Buttons block
     'core/shortcode', // Shortcode block
+    'core/video', // Video block
+    'core/gallery', // Gallery block
+    'core/cover', // Cover block
+    'core/legacy-widget', // Legacy widget block
+    'core/widget-group', // Widget group block
+    'core/archives', // Archives block
+    'core/avatar', // Avatar block
+    'core/block', // Block block
+    'core/calendar', // Calendar block
+    'core/categories', // Categories block
+    'core/comment-author-name', // Comment author name block
+    'core/comment-content', // Comment content block
+    'core/comment-date', // Comment date block
+    'core/comment-edit-link', // Comment edit link block
+    'core/comment-reply-link', // Comment reply link block
+    'core/comment-template', // Comment template block
+    'core/comments', // Comments block
+    'core/comments-pagination', // Comments pagination block
+    'core/comments-pagination-next', // Comments pagination next block
+    'core/comments-pagination-numbers', // Comments pagination numbers block
+    'core/comments-pagination-previous', // Comments pagination previous block
+    'core/comments-title', // Comments title block
+    'core/file', // File block  
+    'core/footnotes', // Footnotes block
+    'core/home-link', // Home link block
+    'core/latest-comments', // Latest comments block  
+    'core/latest-posts', // Latest posts block  
+    'core/loginout', // Login out block
+    'core/navigation', // Navigation block
+    'core/navigation-link', // Navigation link block
+    'core/navigation-submenu', // Navigation submenu block
+    'core/page-list', // Page list block
+    'core/page-list-item', // Page list item block
+    'core/pattern', // Pattern block
+    'core/post-author', // Post author block
+    'core/post-author-biography', // Post author biography block
+    'core/post-author-name', // Post author name block
+    'core/post-comments-form', // Post comments form block
+    'core/post-content', // Post content block
+    'core/post-date', // Post date block
+    'core/post-excerpt', // Post excerpt block
+    'core/post-featured-image', // Post featured image block  
+    'core/post-navigation-link', // Post navigation link block
+    'core/post-template', // Post template block
+    'core/post-terms', // Post terms block
+    'core/post-title', // Post title block
+    'core/query', // Query block
+    'core/query-no-results', // Query no results block
+    'core/query-pagination', // Query pagination block
+    'core/query-pagination-next', // Query pagination next block
+    'core/query-pagination-numbers', // Query pagination numbers block
+    'core/query-pagination-previous', // Query pagination previous block
+    'core/query-title', // Query title block
+    'core/read-more', // Read more block
+    'core/rss', // RSS block
+    'core/search', // Search block
+    'core/site-logo', // Site logo block
+    'core/site-tagline', // Site tagline block
+    'core/site-title', // Site title block
+    'core/social-link', // Social link block
+    'core/tag-cloud', // Tag cloud block
+    'core/template-part', // Template part block  
+    'core/term-description', // Term description block
+    'core/audio', // Audio block
+    'core/code', // Code block
+    'core/details', // Details block
+    'core/embed', // Embed block
+    'core/freeform', // Freeform block
+    'core/group', // Group block
+    'core/html', // HTML block
+    'core/list-item', // List item block
+    'core/media-text', // Media text block
+    'core/missing', // Missing block
+    'core/more', // More block
+    'core/nextpage', // Next page block 
+    'core/preformatted', // Preformatted block
+    'core/pullquote', // Pullquote block
+    'core/quote', // Quote block
+    'core/separator', // Separator block
+    'core/social-links', // Social links block
+    'core/spacer', // Spacer block    
+    'core/table', // Table block
+    'core/text-columns', // Text columns block˝
+    'core/verse', // Verse block
+    'core/post-comments', // Post comments block
     'daniel/hero',  // Hero block
     'daniel/full-width-image', // Full Width Image block
   );
